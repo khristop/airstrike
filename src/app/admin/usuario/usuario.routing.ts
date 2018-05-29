@@ -1,14 +1,14 @@
 import { Routes, RouterModule } from '@angular/router';
-import {HomeComponent} from './home.component';
 import {ModuleWithProviders} from '@angular/core';
+import {PerfilComponent} from './perfil/perfil.component';
 
 export const homeRoutes: Routes = [
     {
         path: '',
-        component: HomeComponent,
+        component: PerfilComponent,
         data: {
-            pageTitle: 'Home'
-        }
+            pageTitle: 'Perfil de usuario'
+        },
     }
 ];
 
