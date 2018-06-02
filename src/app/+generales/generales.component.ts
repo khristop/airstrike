@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-generales',
-  templateUrl: './generales.component.html',
-  styleUrls: ['./generales.component.css']
+  selector: 'airstrike-generales',
+  template: '<h1>Generales</h1>',
+  styles: ['']
 })
 export class GeneralesComponent implements OnInit {
 
