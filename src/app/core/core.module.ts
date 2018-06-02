@@ -7,6 +7,7 @@ import {JsonApiService} from './rest/json-api.service';
 import {LayoutService} from '../shared/layout/layout.service';
 import {UserService} from '../shared/user/user.service';
 import {AlertModule, BsDropdownModule, ProgressbarModule, TabsModule, TooltipModule} from 'ngx-bootstrap';
+import {MAT_DATE_LOCALE} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -18,7 +19,7 @@ import {AlertModule, BsDropdownModule, ProgressbarModule, TabsModule, TooltipMod
     TabsModule.forRoot(),
   ],
   exports: [
-    HttpClientModule
+    HttpClientModule,
   ],
   declarations: [],
   providers: [ // aqui van todos los servicios que deben ser usados como singleton

@@ -24,6 +24,10 @@ export const routes: Routes = [
         path: 'viajar',
         loadChildren: 'app/+viajar/viajar.module#ViajarModule'
       },
+      {
+        path: 'cliente',
+        loadChildren: 'app/+cliente/cliente.module#ClienteModule'
+      },
     ]
   },
 
