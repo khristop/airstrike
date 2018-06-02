@@ -52,6 +52,24 @@
 
       </li>
 
+      <li routerLinkActive="active">
+        <a routerLink="/aeropuertos" title="Aeropuertos">
+          <i class="fa fa-plane"></i> <span class="menu-item-parent">{{'Aeropuertos' | i18n}}</span></a>
+
+        <ul>
+          <li routerLinkActive="active">
+            <a routerLink="/tables/normal">{{'Gateway' | i18n}}</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/tables/datatables">{{'Aeropuertos' | i18n}} </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/tables/ngx-datatable">{{'Horarios' | i18n}} </a>
+          </li>
+        </ul>
+
+      </li>
+
     </ul>
   </nav>
 
