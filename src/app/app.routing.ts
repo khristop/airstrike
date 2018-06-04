@@ -24,17 +24,6 @@ export const routes: Routes = [
         path: 'viajar',
         loadChildren: 'app/+viajar/viajar.module#ViajarModule'
       },
-      {
-        path: 'aeropuertos',
-        loadChildren: 'app/+aeropuertos/aeropuertos.module#AeropuertosModule'
-      },
-      {
-        path: 'generales',
-        loadChildren: 'app/+generales/generales.module#GeneralesModule'
-      },
-      {
-        path: 'linea-aerea',
-        loadChildren: 'app/+linea-aerea/linea-aerea.module#LineaAereaModule'
       },
     ]
   },

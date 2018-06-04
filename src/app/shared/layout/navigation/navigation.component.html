@@ -35,12 +35,15 @@
       </li>
 
       <li routerLinkActive="active">
-        <a routerLink="/cliente" title="cliente">
+        <a routerLink="/cliente" title="Cliente">
           <i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">{{'Client' | i18n}}</span></a>
 
         <ul>
           <li routerLinkActive="active">
             <a routerLink="/tables/normal">{{'Gestionar' | i18n}}</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/cliente/lista">{{'Client list' | i18n}}</a>
           </li>
           <li routerLinkActive="active">
             <a routerLink="/tables/datatables">{{'Permisos' | i18n}} </a>
