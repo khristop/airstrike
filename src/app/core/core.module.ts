@@ -8,6 +8,7 @@ import {LayoutService} from '../shared/layout/layout.service';
 import {UserService} from '../shared/user/user.service';
 import {AlertModule, BsDropdownModule, ProgressbarModule, TabsModule, TooltipModule} from 'ngx-bootstrap';
 import {MAT_DATE_LOCALE} from '@angular/material';
+import {ClienteService} from './rest/cliente/cliente.service';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import {MAT_DATE_LOCALE} from '@angular/material';
     JsonApiService,
     LayoutService,
     UserService,
+    ClienteService
   ]
 })
 export class CoreModule {

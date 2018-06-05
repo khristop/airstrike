@@ -1,0 +1,38 @@
+
+<h3 class="mat-subheading-2">Registro de cliente</h3>
+  <div class="cliente-form">
+  <form class="cliente-form" [formGroup]="options">
+    <div>
+      <label>Tipo de cliente: </label>
+      <mat-radio-group formControlName="tipoCliente">
+        <mat-radio-button value="natural">Natural</mat-radio-button>
+        <mat-radio-button value="juridico">Juridico</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <mat-form-field
+      [hideRequiredMarker]="options.value.hideRequired"
+      [floatLabel]="options.value.floatLabel">
+      <input matInput placeholder="Simple placeholder" required>
+    </mat-form-field>
+
+    <mat-form-field [floatLabel]="options.value.floatLabel">
+      <mat-label>Both a label and a placeholder</mat-label>
+      <input matInput placeholder="Simple placeholder">
+    </mat-form-field>
+
+    <mat-form-field
+      [hideRequiredMarker]="options.value.hideRequired"
+      [floatLabel]="options.value.floatLabel">
+      <mat-select required>
+        <mat-option>-- None --</mat-option>
+        <mat-option value="option">Option</mat-option>
+      </mat-select>
+      <mat-label>
+        <mat-icon>favorite</mat-icon>
+        <b> Fancy</b> <i> label</i></mat-label>
+    </mat-form-field>
+
+  </form>
+
+</div>
