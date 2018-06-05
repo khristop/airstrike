@@ -21,10 +21,29 @@ export const routes: Routes = [
         loadChildren: 'app/+home/home.module#HomeModule'
       },
       {
-        path: 'viajar',
-        loadChildren: 'app/+viajar/viajar.module#ViajarModule'
-      },
-      },
+        path: 'viajar', 
+        loadChildren: 'app/+viajar/viajar.module#ViajarModule' 
+      }, 
+      {
+                path: 'cliente',
+               loadChildren: 'app/+cliente/cliente.module#ClienteModule'
+             },
+       { 
+         path: 'aeropuertos', 
+         loadChildren: 'app/+aeropuertos/aeropuertos.module#AeropuertosModule' 
+       }, 
+      {
+        path: 'gateway',
+       loadChildren: 'app/+gateway/gateway.module#GatewayModule'
+     },
+      { 
+        path: 'generales', 
+        loadChildren: 'app/+generales/generales.module#GeneralesModule' 
+      }, 
+      { 
+        path: 'linea-aerea', 
+        loadChildren: 'app/+linea-aerea/linea-aerea.module#LineaAereaModule' 
+      }, 
     ]
   },
 
