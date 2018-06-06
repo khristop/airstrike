@@ -36,13 +36,46 @@ export const routes: Routes = [
         path: 'gateway',
        loadChildren: 'app/+gateway/gateway.module#GatewayModule'
      },
+     { 
+      path: 'horarios', 
+      loadChildren: 'app/+horario/horario.module#HorarioModule' 
+    }, 
       { 
         path: 'generales', 
         loadChildren: 'app/+generales/generales.module#GeneralesModule' 
       }, 
       { 
+        path: 'modelo-avion', 
+        loadChildren: 'app/+modelo-avion/modelo-avion.module#ModeloAvionModule' 
+      },
+      { 
+        path: 'precio-clase', 
+        loadChildren: 'app/+precio-clase/precio-clase.module#PrecioClaseModule' 
+      },
+      { 
+        path: 'capacidad-clase', 
+        loadChildren: 'app/+capacidad-clase/capacidad-clase.module#CapacidadClaseModule' 
+      },
+      { 
+        path: 'tipo-avion', 
+        loadChildren: 'app/+tipo-avion/tipo-avion.module#TipoAvionModule' 
+      },
+      { 
+        path: 'tipo-clase', 
+        loadChildren: 'app/+tipo-clase/tipo-clase.module#TipoClaseModule' 
+      },
+      { 
+        
         path: 'linea-aerea', 
         loadChildren: 'app/+linea-aerea/linea-aerea.module#LineaAereaModule' 
+      }, 
+      { 
+        path: 'contacto', 
+        loadChildren: 'app/+contacto/contacto.module#ContactoModule' 
+      }, 
+      { 
+        path: 'avion', 
+        loadChildren: 'app/+avion/avion.module#AvionModule' 
       }, 
     ]
   },

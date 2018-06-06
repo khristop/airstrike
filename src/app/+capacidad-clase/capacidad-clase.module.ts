@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LineaAereaComponent } from './linea-aerea.component';
-import {LineaAereaRouting} from './linea-aerea.routing';
+import { CapacidadClaseListComponent } from './capacidad-clase-list/capacidad-clase-list.component';
+import { CapacidadClaseComponent } from './capacidad-clase.component';
 import {AirStrikeModule} from '../shared/airstrike.module';
-import { LineaAereaListComponent } from './linea-aerea-list/linea-aerea-list.component';
+import {capacidadClaseRounting} from './capacidad-clase.routing';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
@@ -13,12 +13,12 @@ import {MaterialModule} from '../shared/layout/material/material.module';
 
 @NgModule({
   imports: [
-    LineaAereaRouting,
+    capacidadClaseRounting,
     AirStrikeModule,
     FormsModule,
     MaterialModule,
     ReactiveFormsModule,
   ],
-  declarations: [LineaAereaComponent, LineaAereaListComponent]
+  declarations: [CapacidadClaseListComponent, CapacidadClaseComponent]
 })
-export class LineaAereaModule { }
+export class CapacidadClaseModule { }
