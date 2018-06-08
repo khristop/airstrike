@@ -1,11 +1,3 @@
-class ICliente{
-  id_cliente: Number;
-  tel_fijo: String;
-  tel_movil: String;
-  direccion: String;
-  num_viajero: Number;
-  id_usuario: Number;
-}
 
 class Cliente {
   id_cliente: Number;
@@ -14,7 +6,7 @@ class Cliente {
   direccion: String;
   num_viajero: Number;
   id_usuario: Number;
-  constructor(options?: ICliente) {
+  constructor(options: any) {
     this.id_cliente = options.id_cliente || null;
     this.tel_fijo = options.tel_fijo || null;
     this.tel_movil = options.tel_movil || null;
@@ -24,7 +16,7 @@ class Cliente {
   }
 }
 
-export class ClienteNatural extends ICliente {
+export class ClienteNatural extends Cliente {
   id_natural: Number;
   primer_nombre: String;
   segundo_nombre: String;
@@ -35,9 +27,7 @@ export class ClienteNatural extends ICliente {
   fecha_nacimiento: Date;
   tipo_doc: String;
   num_doc: String;
-
-  constructor();
-  constructor(cliente?: Object) {
+  constructor(cliente?: any) {
     super(cliente);
     this.id_natural = cliente.id_natural || null;
     this.primer_nombre = cliente.primer_nombre || null;
@@ -52,7 +42,7 @@ export class ClienteNatural extends ICliente {
   }
 }
 
-export class ClienteEmpresa extends ICliente {
+export class ClienteEmpresa extends Cliente {
   public id_c_empresa: Number;
   public nombre_empresa: String;
   public nit: String;

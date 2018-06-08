@@ -3,17 +3,18 @@ import {BehaviorSubject} from 'rxjs/Rx';
 import {ClienteEmpresa, ClienteNatural} from '../../models/cliente/cliente.model';
 import {HttpClient} from '@angular/common/http';
 import {config} from '../../../shared/airstrike.config';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClienteService {
-  private clientesSource: BehaviorSubject<ClienteNatural[], ClienteEmpresa[]> = new BehaviorSubject([]);
-  private clienteSource: BehaviorSubject<ClienteNatural, ClienteEmpresa> = new BehaviorSubject(null);
+  private clientesSource: BehaviorSubject<ClienteNatural[]> = new BehaviorSubject<ClienteNatural[]>([]);
+  private clienteSource: BehaviorSubject<ClienteNatural> = new BehaviorSubject<ClienteNatural>(null);
   // listado de clientes
 
-  private resourceUrl: String;
-  public clientes = this.clienteSource.asObservable();
+  private resourceUrl: string;
+  public clientes = this.clientesSource.asObservable();
   public cliente = this.clienteSource.asObservable();
 
   constructor(private http: HttpClient) {
@@ -22,16 +23,19 @@ export class ClienteService {
 
   fetchClientes(filtro?: String) {
     this.obtenerTodos(filtro || null).subscribe(
-      cliente => this.clienteSource.next(cliente),
+      cliente => this.clientesSource.next([]),
       err => console.log(err) );
   }
-  cambiarCliente(id: Number) {
+  cambiarCliente(id: number) {
     this.obtener(id).subscribe(
       cliente => this.clienteSource.next(cliente),
       err => console.log(err) );
   }
-  obtener(id: Number, filtro?: String) {
-    return this.http.get(filtro ? this.resourceUrl + id + filtro : this.resourceUrl + id );
+  obtener(id: number, filtro?: String ) {
+    const url = filtro ? this.resourceUrl + id + filtro : this.resourceUrl + id ;
+    return this.http.get( url ).pipe(
+      map(cli => new ClienteNatural(cli))
+    );
   }
   obtenerTodos(filtro?: String) {
     return this.http.get(filtro ? this.resourceUrl + filtro : this.resourceUrl );

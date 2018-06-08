@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-cliente-accion',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClienteAccionComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('dialogCreate') dialogCreate: TemplateRef<any>;
+  dialogRef;
+
+  constructor(private _dialog: MatDialog) { }
 
   ngOnInit() {
+  }
+
+  openCreateDialog(): void {
+    this.dialogRef = this._dialog.open( this.dialogCreate, {
+      width: '500px',
+    });
+
+    this.dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 }
