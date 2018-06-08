@@ -18,7 +18,7 @@ export class ClienteAccionComponent implements OnInit {
 
   openCreateDialog(): void {
     this.dialogRef = this._dialog.open( this.dialogCreate, {
-      width: '500px',
+      width: '700px',
     });
 
     this.dialogRef.afterClosed().subscribe(result => {

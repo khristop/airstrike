@@ -1,29 +1,36 @@
 
+{{ clienteForm.value | json }}
 <h3 class="mat-subheading-2">Registro de cliente</h3>
   <div class="cliente-form">
-  <form class="cliente-form" [formGroup]="options">
+  <form class="cliente-form" [formGroup]="clienteForm">
     <div>
       <label>Tipo de cliente: </label>
-      <mat-radio-group formControlName="tipoCliente">
+      <mat-radio-group formControlName="tipo_cliente">
         <mat-radio-button value="natural">Natural</mat-radio-button>
         <mat-radio-button value="juridico">Juridico</mat-radio-button>
       </mat-radio-group>
     </div>
 
     <mat-form-field
-      [hideRequiredMarker]="options.value.hideRequired"
-      [floatLabel]="options.value.floatLabel">
+      [hideRequiredMarker]="clienteForm.value.hideRequired"
+      [floatLabel]="clienteForm.value.floatLabel">
+      <input matInput placeholder="Telefono Fijo" required formControlName="tel_fijo">
+    </mat-form-field>
+
+    <mat-form-field
+      [hideRequiredMarker]="clienteForm.value.hideRequired"
+      [floatLabel]="clienteForm.value.floatLabel">
       <input matInput placeholder="Simple placeholder" required>
     </mat-form-field>
 
-    <mat-form-field [floatLabel]="options.value.floatLabel">
+    <mat-form-field [floatLabel]="clienteForm.value.floatLabel">
       <mat-label>Both a label and a placeholder</mat-label>
       <input matInput placeholder="Simple placeholder">
     </mat-form-field>
 
     <mat-form-field
-      [hideRequiredMarker]="options.value.hideRequired"
-      [floatLabel]="options.value.floatLabel">
+      [hideRequiredMarker]="clienteForm.value.hideRequired"
+      [floatLabel]="clienteForm.value.floatLabel">
       <mat-select required>
         <mat-option>-- None --</mat-option>
         <mat-option value="option">Option</mat-option>
