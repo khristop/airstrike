@@ -11,6 +11,11 @@ import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
 import {MaterialModule} from '../shared/layout/material/material.module';
+import { ClienteFormComponent } from './cliente-form/cliente-form.component';
+import { ClienteDetailComponent } from './cliente-detail/cliente-detail.component';
+import { ClienteAccionComponent } from './cliente-accion/cliente-accion.component';
+import { ClienteNaturalFormComponent } from './cliente-form/cliente-natural-form/cliente-natural-form.component';
+import { ClienteJuridicoFormComponent } from './cliente-form/cliente-juridico-form/cliente-juridico-form.component';
 
 @NgModule({
   imports: [
@@ -20,6 +25,6 @@ import {MaterialModule} from '../shared/layout/material/material.module';
     MaterialModule,
     ReactiveFormsModule,
   ],
-  declarations: [ ClienteComponent, GestionClienteComponent, ClienteListComponent]
+  declarations: [ ClienteComponent, GestionClienteComponent, ClienteListComponent, ClienteFormComponent, ClienteDetailComponent, ClienteAccionComponent, ClienteNaturalFormComponent, ClienteJuridicoFormComponent]
 })
 export class ClienteModule { }
