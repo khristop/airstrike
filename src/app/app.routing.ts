@@ -65,6 +65,14 @@ export const routes: Routes = [
         loadChildren: 'app/+tipo-clase/tipo-clase.module#TipoClaseModule' 
       },
       { 
+        path: 'pais', 
+        loadChildren: 'app/+pais/pais.module#PaisModule' 
+      },
+      { 
+        path: 'ciudad', 
+        loadChildren: 'app/+ciudad/ciudad.module#CiudadModule' 
+      },
+      { 
         
         path: 'linea-aerea', 
         loadChildren: 'app/+linea-aerea/linea-aerea.module#LineaAereaModule' 
