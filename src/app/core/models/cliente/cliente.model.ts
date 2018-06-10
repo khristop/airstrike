@@ -48,7 +48,6 @@ export class ClienteEmpresa extends Cliente {
   public nit: String;
   public nic: Date;
   public nombre_contacto: String;
-  constructor();
   constructor(cliente?: any) {
     super(cliente);
     this.id_c_empresa = cliente.id_c_empresa || null;

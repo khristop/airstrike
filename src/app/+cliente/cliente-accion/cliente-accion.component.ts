@@ -1,5 +1,6 @@
 import {Component, ElementRef, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {MatDialog} from '@angular/material';
+import { ClienteFormComponent } from '../cliente-form/cliente-form.component';
 
 @Component({
   selector: 'app-cliente-accion',
@@ -17,12 +18,12 @@ export class ClienteAccionComponent implements OnInit {
   }
 
   openCreateDialog(): void {
-    this.dialogRef = this._dialog.open( this.dialogCreate, {
-      width: '700px',
+    this.dialogRef = this._dialog.open( ClienteFormComponent , {
+      width: '850px',
     });
 
     this.dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      console.log('Dialogo cerrado');
     });
   }
 
