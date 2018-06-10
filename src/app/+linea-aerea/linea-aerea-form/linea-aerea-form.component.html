@@ -1,0 +1,102 @@
+<h1 mat-dialog-title>Registro de Lineas Aereas</h1>
+<div mat-dialog-content>
+  <div class="container-fluid">
+    <div class="linea-aerea-form">
+      <form class="linea-aerea-form" [formGroup]="linea_aereaForm">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-form-field>
+                  <input matInput formControlName="nombre_oficial" placeholder="ingrese el nombre de la linea Aerea">
+                  <mat-label>
+                    <mat-icon>local_airport</mat-icon>
+                    nombre oficial
+                  </mat-label>
+                </mat-form-field>
+              </div>
+        </div>
+          <div class="row">
+              <div class="col-md-6">
+                <mat-form-field>
+                  <input matInput formControlName="codigo" placeholder="ingrese el código de la linea Aerea">
+                  <mat-label>
+                    <mat-icon>assignment</mat-icon>
+                    código
+                  </mat-label>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                  <mat-form-field>
+                    <input matInput formControlName="nombre_corto" placeholder="ingrese el nombre corto de la linea Aerea">
+                    <mat-label>
+                      <mat-icon>airplanemode_active</mat-icon>
+                      nombre corto
+                    </mat-label>
+                  </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <mat-form-field>
+                      <input matInput formControlName="representante" placeholder="ingrese el nombre del representante de la linea Aerea">
+                      <mat-label>
+                        <mat-icon>person</mat-icon>
+                        representante
+                      </mat-label>
+                    </mat-form-field>
+                  </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="fundacion" formControlName="fundacion" placeholder="Fecha de fundación">
+                      <mat-datepicker-toggle matSuffix [for]="fundacion"></mat-datepicker-toggle>
+                      <mat-datepicker #fundacion disabled="false"></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+              <div class="col-md-6">
+                <mat-form-field>
+                  <mat-select formControlName="codigo_pais">
+                    <mat-option>-- Seleccione --</mat-option>
+                    <mat-option value="1">codigo_pais 1</mat-option>
+                    <mat-option value="2">codigo_pais 2</mat-option>
+                    <mat-option value="2">codigo_pais 3</mat-option>
+                  </mat-select>
+                  <mat-label>
+                    <mat-icon>location_city</mat-icon>
+                    País
+                  </mat-label>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field>
+                    <input matInput formControlName="correo" placeholder="ingrese el correo de la linea Aerea">
+                    <mat-label>
+                      <mat-icon>email</mat-icon>
+                      correo electronico
+                    </mat-label>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field>
+                      <input matInput formControlName="web" placeholder="ingrese la página web de la linea Aerea">
+                      <mat-label>
+                        <mat-icon>web</mat-icon>
+                        páagina web
+                      </mat-label>
+                    </mat-form-field>
+                  </div>
+              </div>
+          
+      </form>
+    </div>
+    <pre>{{ linea_aereaForm.value | json }}</pre>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onCerrar()">Cerrar</button>
+  <button mat-button color="success" cdkFocusInitial [disabled]="!linea_aereaForm.valid" (click)="registrarLineaAerea()">Registrar</button>
+</div>

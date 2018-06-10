@@ -10,6 +10,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
 import {MaterialModule} from '../shared/layout/material/material.module';
 import { ContactoComponent } from './contacto.component';
+import { ContactoFormComponent } from './contacto-form/contacto-form.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import { ContactoComponent } from './contacto.component';
     MaterialModule,
     ReactiveFormsModule,
   ],
-  declarations: [ContactoListComponent, ContactoComponent]
+  declarations: [ContactoListComponent, ContactoComponent, ContactoFormComponent]
 })
 export class ContactoModule { }

@@ -10,6 +10,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
 import {MaterialModule} from '../shared/layout/material/material.module';
+import { AvionFormComponent } from './avion-form/avion-form.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import {MaterialModule} from '../shared/layout/material/material.module';
     MaterialModule,
     ReactiveFormsModule,
   ],
-  declarations: [AvionListComponent, AvionComponent]
+  declarations: [AvionListComponent, AvionComponent, AvionFormComponent]
 })
 export class AvionModule { }

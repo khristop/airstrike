@@ -1,5 +1,7 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatDialog} from '@angular/material';
+import { ContactoFormComponent } from '../contacto-form/contacto-form.component';
 
 @Component({
   selector: 'airstrike-contacto-list',
@@ -12,8 +14,10 @@ export class ContactoListComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild('dialogCreate') dialogCreate: TemplateRef<any>;
+  dialogRef;
 
-  constructor() {
+  constructor(private _dialog: MatDialog) {
     // Create 100 users
     const users: UserData[] = [];
     for (let i = 1; i <= 100; i++) {
@@ -22,6 +26,17 @@ export class ContactoListComponent implements OnInit {
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(users);
+  }
+
+  //mas cosas del form
+  openCreateDialog(): void {
+    this.dialogRef = this._dialog.open( ContactoFormComponent , {
+      width: '850px',
+    });
+
+    this.dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialogo cerrado');
+    });
   }
 
   ngOnInit() {

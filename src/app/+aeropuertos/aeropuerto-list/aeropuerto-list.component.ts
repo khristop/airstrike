@@ -1,5 +1,7 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatDialog} from '@angular/material';
+import { AeropuertoFormComponent } from '../aeropuerto-form/aeropuerto-form.component';
 
 @Component({
   selector: 'airstrike-aeropuerto-list',
@@ -7,13 +9,16 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
   styleUrls: ['./aeropuerto-list.component.css']
 })
 export class AeropuertoListComponent implements OnInit {
+
+  @ViewChild('dialogCreate') dialogCreate: TemplateRef<any>;
+  dialogRef;
   columnas = ['Código', 'Nombre', 'Código de Ciudad','Telefono','Bahía','Acciones'];
   dataSource: MatTableDataSource<UserData>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor() {
+  constructor(private _dialog: MatDialog) {
     // Create 100 users
     const users: UserData[] = [];
     for (let i = 1; i <= 100; i++) {
@@ -27,6 +32,19 @@ export class AeropuertoListComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+  openCreateDialog(): void {
+    this.dialogRef = this._dialog.open( AeropuertoFormComponent , {
+      width: '850px',
+    });
+
+    this.dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialogo cerrado');
+    });
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
   applyFilter(filterValue: string) {

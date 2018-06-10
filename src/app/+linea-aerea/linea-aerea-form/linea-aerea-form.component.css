@@ -1,0 +1,25 @@
+.linea-aerea-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  .linea-aerea-form > .mat-form-field {
+    width: 100%;
+  }
+  
+  .linea-aerea-form form {
+    margin-bottom: 20px;
+  }
+  
+  .linea-aerea-form form > * {
+    margin: 5px 0;
+  }
+  
+  .linea-aerea-form .mat-radio-button {
+    margin: 0 5px;
+  }
+  

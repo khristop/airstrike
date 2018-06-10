@@ -2,6 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {LineaAereaComponent} from './linea-aerea.component';
 import {ModuleWithProviders} from '@angular/core';
 import {LineaAereaListComponent} from './linea-aerea-list/linea-aerea-list.component';
+import {LineaAereaFormComponent} from './linea-aerea-form/linea-aerea-form.component';
 
 export const LineaAereaRoutes: Routes = [
     {
@@ -16,6 +17,13 @@ export const LineaAereaRoutes: Routes = [
             component: LineaAereaListComponent,
             data: {
                 pageTitle: 'Lista de Linea Aereas'
+            }
+        },
+        {
+            path: 'gestion',
+            component: LineaAereaFormComponent,
+            data: {
+                pageTitle: 'formulario Linea Aereas'
             }
         },
     

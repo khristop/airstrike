@@ -7,8 +7,11 @@
       <div class="col-sm-4">
           <h1>Información de Contactos</h1>
           <br>
-        <a href="" style="background-color:#04ad07;" class="btn btn-success" data-toggle="modal" matTooltip="Añade un nuevo elemento">
-          <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Agregar</a>
+          <mat-list-item>
+              <button mat-raised-button style="background-color:#04ad07;color:#ffffff"
+               (click)="openCreateDialog()">
+               <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Registrar</button>
+            </mat-list-item>
         </div>
       
   </div>

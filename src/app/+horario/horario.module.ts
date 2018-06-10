@@ -10,6 +10,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
 import {MaterialModule} from '../shared/layout/material/material.module';
 import { HorariosComponent } from './horario.component';
+import { HorarioFormComponent } from './horario-form/horario-form.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import { HorariosComponent } from './horario.component';
     MaterialModule,
     ReactiveFormsModule,
   ],
-  declarations: [HorariosComponent, HorarioListComponent]
+  declarations: [HorariosComponent, HorarioListComponent, HorarioFormComponent]
 })
 export class HorarioModule { }
