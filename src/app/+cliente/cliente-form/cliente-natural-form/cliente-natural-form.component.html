@@ -1,3 +1,105 @@
-<p>
-  cliente-natural-form works!
-</p>
+<form class="cliente-form" [formGroup]="naturalForm">
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field>
+        <input matInput formControlName="primer_nombre" placeholder="ingrese el primer nombre">
+        <mat-label>
+          <mat-icon>perm_identity</mat-icon>
+          Primer nombre
+        </mat-label>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field>
+        <input matInput formControlName="segundo_nombre" placeholder="ingrese el segundo nombre">
+        <mat-label>
+          <mat-icon>perm_identity</mat-icon>
+          Segundo nombre
+        </mat-label>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field>
+        <input matInput formControlName="primer_apellido" placeholder="ingrese el primer apellido">
+        <mat-label>
+          <mat-icon>perm_identity</mat-icon>
+          Primer apellido
+        </mat-label>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field>
+        <input matInput formControlName="segundo_apellido" placeholder="ingrese el segundo apellido">
+        <mat-label>
+          <mat-icon>perm_identity</mat-icon>
+          Segundo apellido
+        </mat-label>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <label>
+        <b>Genero </b>
+      </label>
+      <mat-radio-group formControlName="genero">
+        <mat-radio-button value="m">Masculino</mat-radio-button>
+        <mat-radio-button value="f">Femennino</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field>
+        <mat-select formControlName="estado_civil">
+          <mat-option>-- Seleccione --</mat-option>
+          <mat-option value="soltero">Soltero/a</mat-option>
+          <mat-option value="casado">Casado/a</mat-option>
+          <mat-option value="viudo">Viudo/a</mat-option>
+        </mat-select>
+        <mat-label>
+          <mat-icon>wc</mat-icon>
+          Estado civil
+        </mat-label>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field>
+        <input matInput [matDatepicker]="fechaNac" formControlName="fecha_nacimiento" placeholder="Fecha de nacimiento">
+        <mat-datepicker-toggle matSuffix [for]="fechaNac"></mat-datepicker-toggle>
+        <mat-datepicker #fechaNac disabled="false"></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+ 
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field>
+        <mat-select formControlName="tipo_doc">
+          <mat-option>-- Seleccione --</mat-option>
+          <mat-option value="soltero">Dui</mat-option>
+          <mat-option value="casado">Nit</mat-option>
+          <mat-option value="viudo">Pasaporte</mat-option>
+        </mat-select>
+        <mat-label>
+          <mat-icon>credit_card</mat-icon>
+          Tipo de documento
+        </mat-label>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field>
+        <input matInput formControlName="num_doc" placeholder="ingrese el numero de documento">
+        <mat-label>
+          <mat-icon>credit_card</mat-icon>
+          Numero de documento
+        </mat-label>
+      </mat-form-field>
+    </div>    
+  </div>
+
+</form>

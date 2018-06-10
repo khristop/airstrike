@@ -9,8 +9,8 @@ import {map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ClienteService {
-  private clientesSource: BehaviorSubject<ClienteNatural[]> = new BehaviorSubject<ClienteNatural[]>([]);
-  private clienteSource: BehaviorSubject<ClienteNatural> = new BehaviorSubject<ClienteNatural>(null);
+  private clientesSource: BehaviorSubject<ClienteNatural[] | ClienteEmpresa[]> = new BehaviorSubject<ClienteNatural[]>([]);
+  private clienteSource: BehaviorSubject<ClienteNatural | ClienteEmpresa > = new BehaviorSubject(null);
   // listado de clientes
 
   private resourceUrl: string;
@@ -34,7 +34,16 @@ export class ClienteService {
   obtener(id: number, filtro?: String ) {
     const url = filtro ? this.resourceUrl + id + filtro : this.resourceUrl + id ;
     return this.http.get( url ).pipe(
-      map(cli => new ClienteNatural(cli))
+      map(cli => {
+        let res = cli['response']; 
+        if(res && res.hasOwnProperty('id_natural')){
+          return new ClienteNatural(res);
+        }else if(res && res.hasOwnProperty('id_c_empresa')){
+          return new ClienteEmpresa(res);
+        }else{
+          return null;
+        }
+      })
     );
   }
   obtenerTodos(filtro?: String) {

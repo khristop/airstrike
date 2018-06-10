@@ -1,3 +1,47 @@
-<p>
-  cliente-juridico-form works!
-</p>
+<form class="cliente-form" [formGroup]="empresaForm">
+    <div class="row">
+      <div class="col-md-12">
+        <mat-form-field>
+          <input matInput formControlName="nombre_empresa" placeholder="ingrese el nombre de la empresa">
+          <mat-label>
+            <mat-icon>account_balance</mat-icon>
+            Nombre empresa
+          </mat-label>
+        </mat-form-field>
+      </div>
+    </div>
+   
+    <div class="row">
+      <div class="col-md-12">
+        <mat-form-field>
+          <input matInput formControlName="nombre_contacto" placeholder="ingrese el nombre del contacto">
+          <mat-label>
+            <mat-icon>person</mat-icon>
+            Nombre del contacto
+          </mat-label>
+        </mat-form-field>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field>
+          <input matInput formControlName="nit" placeholder="numero de nit">
+          <mat-label>
+            <mat-icon>payment</mat-icon>
+            NIT
+          </mat-label>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field>
+          <input matInput formControlName="nic" placeholder="numero de nic">
+          <mat-label>
+            <mat-icon>payment</mat-icon>
+            NIC
+          </mat-label>
+        </mat-form-field>
+      </div>
+    </div>
+  
+  </form>

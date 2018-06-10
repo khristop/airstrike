@@ -3,7 +3,11 @@
   flex-direction: column;
 }
 
-.cliente-form > * {
+.mat-form-field {
+  width: 100%;
+}
+
+.cliente-form > .mat-form-field {
   width: 100%;
 }
 

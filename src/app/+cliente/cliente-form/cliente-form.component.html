@@ -1,45 +1,81 @@
+<h1 mat-dialog-title>Registro de cliente</h1>
+<div mat-dialog-content>
+  <div class="container-fluid">
+    <div class="cliente-form">
+      <form class="cliente-form" [formGroup]="clienteForm">
 
-{{ clienteForm.value | json }}
-<h3 class="mat-subheading-2">Registro de cliente</h3>
-  <div class="cliente-form">
-  <form class="cliente-form" [formGroup]="clienteForm">
-    <div>
-      <label>Tipo de cliente: </label>
-      <mat-radio-group formControlName="tipo_cliente">
-        <mat-radio-button value="natural">Natural</mat-radio-button>
-        <mat-radio-button value="juridico">Juridico</mat-radio-button>
-      </mat-radio-group>
+        <div class="row">
+          <div class="col-md 12">
+            <label>
+              <b>Tipo de cliente</b>
+            </label>
+            <mat-radio-group formControlName="tipo_cliente" (change)="cambioTipoCliente()">
+              <mat-radio-button value="natural">Natural</mat-radio-button>
+              <mat-radio-button value="juridico">Juridico</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+
+        <ng-container *ngIf="clienteForm.get('tipo_cliente').value =='natural'; then naturalForm; else juridicoForm"></ng-container>
+        <ng-template #naturalForm>
+          <app-cliente-natural-form [detalleCliente]="clienteForm.get('detalle_natural')"></app-cliente-natural-form>
+        </ng-template>
+        <ng-template #juridicoForm>
+          <ng-container *ngIf="clienteForm.get('tipo_cliente').value =='juridico'">
+            <app-cliente-juridico-form [detalleCliente]="clienteForm.get('detalle_empresa')"></app-cliente-juridico-form>
+          </ng-container>
+        </ng-template>
+
+        <ng-container *ngIf="clienteForm.get('tipo_cliente').value != ''">
+
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field [hideRequiredMarker]="clienteForm.value.hideRequired" [floatLabel]="clienteForm.value.floatLabel">
+                <input matInput formControlName="tel_fijo" placeholder="ingrese el telefono fijo">
+                <mat-label>
+                  <mat-icon>local_phone</mat-icon>
+                  Telefono Fijo
+                </mat-label>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field [hideRequiredMarker]="clienteForm.value.hideRequired" [floatLabel]="clienteForm.value.floatLabel">
+                <input matInput formControlName="tel_movil" placeholder="ingrese el telefono movil">
+                <mat-label>
+                  <mat-icon>phone_android</mat-icon>
+                  Telefono Fijo
+                </mat-label>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <mat-form-field [hideRequiredMarker]="clienteForm.value.hideRequired" [floatLabel]="clienteForm.value.floatLabel">
+                <textarea matInput placeholder="Ingrese la direccion" formControlName="direccion"></textarea>
+                <mat-label>
+                  <mat-icon>location_city</mat-icon>
+                  Direccion
+                </mat-label>
+              </mat-form-field>
+            </div>
+          </div>
+
+        </ng-container>
+
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="subheading-2">Informacion del usuario</h3>
+          </div>
+        </div>
+
+
+      </form>
     </div>
+    <pre>{{ clienteForm.value | json }}</pre>
+  </div>
+</div>
 
-    <mat-form-field
-      [hideRequiredMarker]="clienteForm.value.hideRequired"
-      [floatLabel]="clienteForm.value.floatLabel">
-      <input matInput placeholder="Telefono Fijo" required formControlName="tel_fijo">
-    </mat-form-field>
-
-    <mat-form-field
-      [hideRequiredMarker]="clienteForm.value.hideRequired"
-      [floatLabel]="clienteForm.value.floatLabel">
-      <input matInput placeholder="Simple placeholder" required>
-    </mat-form-field>
-
-    <mat-form-field [floatLabel]="clienteForm.value.floatLabel">
-      <mat-label>Both a label and a placeholder</mat-label>
-      <input matInput placeholder="Simple placeholder">
-    </mat-form-field>
-
-    <mat-form-field
-      [hideRequiredMarker]="clienteForm.value.hideRequired"
-      [floatLabel]="clienteForm.value.floatLabel">
-      <mat-select required>
-        <mat-option>-- None --</mat-option>
-        <mat-option value="option">Option</mat-option>
-      </mat-select>
-      <mat-label>
-        <mat-icon>favorite</mat-icon>
-        <b> Fancy</b> <i> label</i></mat-label>
-    </mat-form-field>
-
-  </form>
-
+<div mat-dialog-actions>
+  <button mat-button (click)="onCerrar()">Cerrar</button>
+  <button mat-button color="success" cdkFocusInitial [disabled]="!clienteForm.valid" (click)="registrarCliente()">Registrar</button>
 </div>
