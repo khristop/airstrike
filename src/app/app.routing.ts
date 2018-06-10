@@ -21,13 +21,70 @@ export const routes: Routes = [
         loadChildren: 'app/+home/home.module#HomeModule'
       },
       {
-        path: 'viajar',
-        loadChildren: 'app/+viajar/viajar.module#ViajarModule'
-      },
+        path: 'viajar', 
+        loadChildren: 'app/+viajar/viajar.module#ViajarModule' 
+      }, 
       {
-        path: 'cliente',
-        loadChildren: 'app/+cliente/cliente.module#ClienteModule'
+                path: 'cliente',
+               loadChildren: 'app/+cliente/cliente.module#ClienteModule'
+             },
+       { 
+         path: 'aeropuertos', 
+         loadChildren: 'app/+aeropuertos/aeropuertos.module#AeropuertosModule' 
+       }, 
+      {
+        path: 'gateway',
+       loadChildren: 'app/+gateway/gateway.module#GatewayModule'
+     },
+     { 
+      path: 'horarios', 
+      loadChildren: 'app/+horario/horario.module#HorarioModule' 
+    }, 
+      { 
+        path: 'generales', 
+        loadChildren: 'app/+generales/generales.module#GeneralesModule' 
+      }, 
+      { 
+        path: 'modelo-avion', 
+        loadChildren: 'app/+modelo-avion/modelo-avion.module#ModeloAvionModule' 
       },
+      { 
+        path: 'precio-clase', 
+        loadChildren: 'app/+precio-clase/precio-clase.module#PrecioClaseModule' 
+      },
+      { 
+        path: 'capacidad-clase', 
+        loadChildren: 'app/+capacidad-clase/capacidad-clase.module#CapacidadClaseModule' 
+      },
+      { 
+        path: 'tipo-avion', 
+        loadChildren: 'app/+tipo-avion/tipo-avion.module#TipoAvionModule' 
+      },
+      { 
+        path: 'tipo-clase', 
+        loadChildren: 'app/+tipo-clase/tipo-clase.module#TipoClaseModule' 
+      },
+      { 
+        path: 'pais', 
+        loadChildren: 'app/+pais/pais.module#PaisModule' 
+      },
+      { 
+        path: 'ciudad', 
+        loadChildren: 'app/+ciudad/ciudad.module#CiudadModule' 
+      },
+      { 
+        
+        path: 'linea-aerea', 
+        loadChildren: 'app/+linea-aerea/linea-aerea.module#LineaAereaModule' 
+      }, 
+      { 
+        path: 'contacto', 
+        loadChildren: 'app/+contacto/contacto.module#ContactoModule' 
+      }, 
+      { 
+        path: 'avion', 
+        loadChildren: 'app/+avion/avion.module#AvionModule' 
+      }, 
     ]
   },
 

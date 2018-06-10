@@ -1,0 +1,25 @@
+.aeropuerto-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  .aeropuerto-form > .mat-form-field {
+    width: 100%;
+  }
+  
+  .aeropuerto-form form {
+    margin-bottom: 20px;
+  }
+  
+  .aeropuerto-form form > * {
+    margin: 5px 0;
+  }
+  
+  .aeropuerto-form .mat-radio-button {
+    margin: 0 5px;
+  }
+  

@@ -52,6 +52,72 @@
 
       </li>
 
+      <li routerLinkActive="active">
+        <a title="Aeropuertos">
+          <i class="fa fa-plane"></i> <span class="menu-item-parent">{{'Aeropuertos' | i18n}}</span></a>
+
+        <ul>
+          <li routerLinkActive="active">
+            <a routerLink="/gateway/lista">{{'Gateway' | i18n}}</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/aeropuertos/lista">{{'Aeropuertos' | i18n}} </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/horarios/lista">{{'Horarios' | i18n}} </a>
+          </li>
+        </ul>
+
+      </li>
+      <!--Menu generales-->
+      <li routerLinkActive="active">
+        <a title="Generales">
+          <i class="fa fa-globe"></i> <span class="menu-item-parent">{{'Generales' | i18n}}</span></a>
+
+        <ul>
+          <li routerLinkActive="active">
+            <a routerLink="/pais/lista">{{'Pais' | i18n}}</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/ciudad/lista">{{'Ciudad' | i18n}} </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/modelo-avion/lista">{{'Modelos de avion' | i18n}} </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/precio-clase/lista">{{'Precio de las clases' | i18n}} </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/tipo-clase/lista">{{'Tipos de clases' | i18n}} </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/capacidad-clase/lista">{{'Capacidad de las clases' | i18n}} </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/tipo-avion/lista">{{'Tipos de avión' | i18n}} </a>
+          </li>
+        </ul>
+
+      </li>
+<!--Menu Linea Aerea-->
+<li routerLinkActive="active">
+  <a title="Lineas Aereas">
+    <i class="fa fa-paper-plane"></i> <span class="menu-item-parent">{{'Lineas Aéreas' | i18n}}</span></a>
+
+  <ul>
+    <li routerLinkActive="active">
+      <a routerLink="/linea-aerea/lista">{{'Linea Aerea' | i18n}}</a>
+    </li>
+    <li routerLinkActive="active">
+      <a routerLink="/contacto/lista">{{'Contacto' | i18n}} </a>
+    </li>
+    <li routerLinkActive="active">
+      <a routerLink="/avion/lista">{{'Avión' | i18n}} </a>
+    </li>
+  </ul>
+
+</li>
+
     </ul>
   </nav>
 

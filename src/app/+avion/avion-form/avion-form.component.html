@@ -1,0 +1,73 @@
+<h1 mat-dialog-title>Registro de Aviones</h1>
+<div mat-dialog-content>
+  <div class="container-fluid">
+    <div class="avion-form">
+      <form class="avion-form" [formGroup]="avionForm">
+          <div class="row">
+              <div class="col-md-6">
+                <mat-form-field>
+                  <input matInput formControlName="placa" placeholder="ingrese la placa del avion">
+                  <mat-label>
+                    <mat-icon>airplanemode_active</mat-icon>
+                    placa
+                  </mat-label>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                  <mat-form-field>
+                    <mat-select formControlName="tipo_avion">
+                      <mat-option>-- Seleccione --</mat-option>
+                      <mat-option value="1">avion_tipo 1</mat-option>
+                      <mat-option value="2">avion_tipo 2</mat-option>
+                      <mat-option value="2">avion_tipo 3</mat-option>
+                    </mat-select>
+                    <mat-label>
+                      <mat-icon>airplanemode_active</mat-icon>
+                      Tipo de Avión
+                    </mat-label>
+                  </mat-form-field>
+                </div>
+            </div>
+           
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field>
+                      <mat-select formControlName="linea_aerea">
+                        <mat-option>-- Seleccione --</mat-option>
+                        <mat-option value="1">linea_aerea 1</mat-option>
+                        <mat-option value="2">linea_aerea 2</mat-option>
+                        <mat-option value="2">linea_aerea 3</mat-option>
+                      </mat-select>
+                      <mat-label>
+                        <mat-icon>location_city</mat-icon>
+                        Linea Aerea
+                      </mat-label>
+                    </mat-form-field>
+                  </div>
+              <div class="col-md-6">
+                <mat-form-field>
+                  <mat-select formControlName="modelo_avion">
+                    <mat-option>-- Seleccione --</mat-option>
+                    <mat-option value="1">modelo_avion 1</mat-option>
+                    <mat-option value="2">modelo_avion 2</mat-option>
+                    <mat-option value="2">modelo_avion 3</mat-option>
+                  </mat-select>
+                  <mat-label>
+                    <mat-icon>airplanemode_active</mat-icon>
+                    Modelo de Avión
+                  </mat-label>
+                </mat-form-field>
+              </div>
+            </div>
+          
+      </form>
+    </div>
+    <pre>{{ avionForm.value | json }}</pre>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onCerrar()">Cerrar</button>
+  <button mat-button color="success" cdkFocusInitial [disabled]="!avionForm.valid" (click)="registraravion()">Registrar</button>
+</div>

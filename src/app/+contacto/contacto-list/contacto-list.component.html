@@ -1,0 +1,86 @@
+<div id="content">
+  <div class="row">
+    
+  </div>
+  <div class="row">
+      
+      <div class="col-sm-4">
+          <h1>Información de Contactos</h1>
+          <br>
+          <mat-list-item>
+              <button mat-raised-button style="background-color:#04ad07;color:#ffffff"
+               (click)="openCreateDialog()">
+               <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Registrar</button>
+            </mat-list-item>
+        </div>
+      
+  </div>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-sm-12">
+      <div  class="well">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Busqueda">
+        </mat-form-field>
+
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource" matSort>
+
+            <!-- ID Column -->
+            <ng-container matColumnDef="Id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+              <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+            </ng-container>
+
+            <!-- Progress Column -->
+            <ng-container matColumnDef="Dirección Web">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Dirección Wed </th>
+              <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="Código de linea Aerea">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Código de linea Aerea </th>
+              <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="Nombre">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+              <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="action" class="mat-form-field">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
+              <td mat-cell *matCellDef="let row" class="row">
+                <div class="button-row" >
+                  <div class="col-sm-2">
+                  <button mat-mini-fab color="primary"
+                  matTooltip="Editar">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <div class="col-sm-1">
+                  <button mat-mini-fab color="warn"
+                  matTooltip="Borrar">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </button>
+                </div>
+                </div>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnas;">
+            </tr>
+          </table>
+
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
