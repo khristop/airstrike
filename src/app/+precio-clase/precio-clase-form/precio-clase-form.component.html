@@ -1,0 +1,70 @@
+<h1 mat-dialog-title>Registro de Aviones</h1>
+<div mat-dialog-content>
+  <div class="container-fluid">
+    <div class="precio-clase-form">
+      <form class="precio-clase-form" [formGroup]="precio_claseForm">
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field>
+                <mat-select formControlName="clase">
+                  <mat-option>-- Seleccione --</mat-option>
+                  <mat-option value="1">clase 1</mat-option>
+                  <mat-option value="2">clase 2</mat-option>
+                  <mat-option value="2">clase 3</mat-option>
+                </mat-select>
+                <mat-label>
+                  <mat-icon>airplanemode_active</mat-icon>
+                  Clase
+                </mat-label>
+              </mat-form-field>
+            </div>
+              <div class="col-md-6">
+                  <mat-form-field>
+                    <mat-select formControlName="programacion">
+                      <mat-option>-- Seleccione --</mat-option>
+                      <mat-option value="1">programacion 1</mat-option>
+                      <mat-option value="2">programacion 2</mat-option>
+                      <mat-option value="2">programacion 3</mat-option>
+                    </mat-select>
+                    <mat-label>
+                      <mat-icon>airplanemode_active</mat-icon>
+                      Programacion de vuelo
+                    </mat-label>
+                  </mat-form-field>
+                </div>
+            </div>
+           
+            
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field>
+                  <input matInput type="number" placeholder="precio" formControlName="precio" min="1">
+                  <!--<mat-error *ngIf="options.get('fontSize')?.invalid">Asientos minimos 1</mat-err>-->
+                  <mat-label>
+                    <mat-icon>attach_money</mat-icon>
+                    Precio
+                  </mat-label>
+                </mat-form-field>
+              </div>
+              
+                <div class="col-md-6">
+                  <mat-form-field>
+                    <input matInput type="number" placeholder="maleta" formControlName="maleta" min="1">
+                    <!--<mat-error *ngIf="options.get('fontSize')?.invalid">Asientos minimos 1</mat-err>-->
+                    <mat-label>
+                      <mat-icon>attach_money</mat-icon>
+                      Precio Maleta
+                    </mat-label>
+                  </mat-form-field>
+                  </div>
+          </div>
+      </form>
+    </div>
+    <pre>{{ precio_claseForm.value | json }}</pre>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onCerrar()">Cerrar</button>
+  <button mat-button color="success" cdkFocusInitial [disabled]="!precio_claseForm.valid" (click)="registrarPrecioClase()">Registrar</button>
+</div>

@@ -1,0 +1,25 @@
+.capacidad-clase-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  .capacidad-clase-form > .mat-form-field {
+    width: 100%;
+  }
+  
+  .capacidad-clase-form form {
+    margin-bottom: 20px;
+  }
+  
+  .capacidad-clase-form form > * {
+    margin: 5px 0;
+  }
+  
+  .capacidad-clase-form .mat-radio-button {
+    margin: 0 5px;
+  }
+  

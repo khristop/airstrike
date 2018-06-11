@@ -2,6 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {ModuleWithProviders} from '@angular/core';
 import {CapacidadClaseComponent} from './capacidad-clase.component';
 import {CapacidadClaseListComponent} from './capacidad-clase-list/capacidad-clase-list.component';
+import {CapacidadClaseFormComponent} from './capacidad-clase-form/capacidad-clase-form.component';
 
 export const capacidadClaseRoutes: Routes = [
     {
@@ -16,6 +17,14 @@ export const capacidadClaseRoutes: Routes = [
         component: CapacidadClaseListComponent,
         data: {
             pageTitle: 'Lista de Capacidades para las Clases'
+        }
+        
+    },
+    {
+        path: 'gestion', 
+        component: CapacidadClaseFormComponent,
+        data: {
+            pageTitle: 'Formulario de Capacidades para las Clases'
         }
         
     },
