@@ -1,0 +1,62 @@
+<header id="header" class="animated fadeInDown">
+
+  <div id="logo-group">
+    <span id="logo">
+      <img src="assets/img/logo_airstrike.png" alt="AirStrikeLogo"> </span>
+  </div>
+
+  <span id="extr-page-header-space">
+    <span class="hidden-mobile hiddex-xs">¿Ya tienes cuenta?</span>
+    <a routerLink="/acceso/login" class="btn btn-success">Iniciar Sesión</a>
+  </span>
+
+</header>
+<div id="main" role="main" class="animated fadeInDown">
+
+  <!-- MAIN CONTENT -->
+  <div id="content" class="container">
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 hidden-xs hidden-sm">
+        <h1 class="txt-color-orangeDark login-header-big">AirStrike</h1>
+        <div class="hero">
+
+          <div class="pull-left login-desc-box-l">
+            <h4 class="paragraph-header">Experimenta el primer dia de tu nueva vida, registrate y siente lo que es vivir!</h4>
+            <div class="login-app-icons">
+              <a routerLink="/inicio" class="btn btn-info btn-lg">Regresar al inicio</a>
+            </div>
+          </div>
+          <img src="assets/img/airs.png" class="pull-right display-image" alt="" style="width:100%; max-width:300px; position: absolute">
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+        <div class="well no-padding">
+
+          <app-cliente-form-ext></app-cliente-form-ext>
+
+        </div>
+        <h5 class="text-center">- Redes sociales -</h5>
+        <ul class="list-inline text-center">
+          <li>
+            <a (click)="(null)" class="btn btn-primary btn-circle">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a (click)="(null)" class="btn btn-info btn-circle">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a (click)="(null)" class="btn btn-warning btn-circle">
+              <i class="fa fa-linkedin"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</div>

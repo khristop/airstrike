@@ -16,6 +16,7 @@ import { ClienteDetailComponent } from './cliente-detail/cliente-detail.componen
 import { ClienteAccionComponent } from './cliente-accion/cliente-accion.component';
 import { ClienteNaturalFormComponent } from './cliente-form/cliente-natural-form/cliente-natural-form.component';
 import { ClienteJuridicoFormComponent } from './cliente-form/cliente-juridico-form/cliente-juridico-form.component';
+import { ClienteFormExtComponent } from './cliente-form/cliente-form-ext.component';
 
 @NgModule({
   imports: [
@@ -25,6 +26,9 @@ import { ClienteJuridicoFormComponent } from './cliente-form/cliente-juridico-fo
     MaterialModule,
     ReactiveFormsModule,
   ],
-  declarations: [ ClienteComponent, GestionClienteComponent, ClienteListComponent, ClienteFormComponent, ClienteDetailComponent, ClienteAccionComponent, ClienteNaturalFormComponent, ClienteJuridicoFormComponent]
+  exports:[ClienteFormComponent, ClienteFormExtComponent],
+  declarations: [ ClienteComponent, GestionClienteComponent, ClienteListComponent, ClienteFormComponent,
+    ClienteDetailComponent, ClienteAccionComponent, ClienteNaturalFormComponent, ClienteJuridicoFormComponent,
+  ClienteFormExtComponent],
 })
 export class ClienteModule { }

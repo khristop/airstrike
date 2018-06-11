@@ -1,8 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 import {ModuleWithProviders} from '@angular/core';
-import {ViajarComponent} from './viajar.component';
 import {ClienteComponent} from './cliente.component';
-import {GestionClienteComponent} from './gestion-cliente/gestion-cliente.component';
 import {ClienteListComponent} from './cliente-list/cliente-list.component';
 import {ClienteFormComponent} from './cliente-form/cliente-form.component';
 
@@ -14,10 +12,10 @@ export const clienteRoutes: Routes = [
             pageTitle: 'Clientes'
         }
     }, {
-        path: 'gestion',
+        path: 'registro',
         component: ClienteFormComponent,
         data: {
-            pageTitle: 'gestion'
+            pageTitle: 'Registro de cliente'
         }
     }, {
         path: 'lista',
