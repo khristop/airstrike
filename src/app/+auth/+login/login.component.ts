@@ -55,8 +55,9 @@ export class LoginComponent implements OnInit, AfterContentInit {
   // }
 
   login(form: NgForm) {
-    const email = form.value.email;
-    const password = form.value.password;
+    // const email = form.value.email;
+    // const password = form.value.password;
+    this.router.navigate(['/app/home']);
     // this.authService.login(email, password, (res)=> {
     //   if(res.error){
     //     this.error = res.error;

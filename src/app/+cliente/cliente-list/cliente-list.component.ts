@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatPaginator, MatSort, MatTableDataSource, MatDialog} from '@angular/material';
+import { ClienteFormComponent } from '../cliente-form/cliente-form.component';
 
 @Component({
   selector: 'app-cliente-list',
@@ -7,13 +8,15 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
   styleUrls: ['./cliente-list.component.css']
 })
 export class ClienteListComponent implements OnInit {
-  columnas = ['id', 'name', 'progress', 'color', 'action'];
+  columnas = ['id', 'usuario', 'tipo', 'estado', 'action'];
   dataSource: MatTableDataSource<UserData>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor() {
+  dialogUpdateCliRef;
+
+  constructor(private _dialog: MatDialog) {
     // Create 100 users
     const users: UserData[] = [];
     for (let i = 1; i <= 100; i++) {
@@ -37,6 +40,17 @@ export class ClienteListComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  openUpdateDialog(idCliente: number){
+    //ejecutar peticion hacia el servicio primero
+    this.dialogUpdateCliRef = this._dialog.open( ClienteFormComponent , {
+      width: '850px',
+    });
+
+    this.dialogUpdateCliRef.afterClosed().subscribe(result => {
+      console.log('Dialogo cerrado');
+    });
+  }
 }
 
 /** Builds and returns a new User. */
@@ -47,9 +61,9 @@ function createNewUser(id: number): UserData {
 
   return {
     id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
+    usuario: name,
+    tipo: Math.round(Math.random() * 100).toString(),
+    estado: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
   };
 
 
@@ -63,7 +77,7 @@ const NAMES = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
 
 export interface UserData {
   id: string;
-  name: string;
-  progress: string;
-  color: string;
+  usuario: string;
+  tipo: string;
+  estado: string;
 }

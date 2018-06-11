@@ -6,7 +6,7 @@ import {clienteRounting} from './cliente.routing';
 import { GestionClienteComponent } from './gestion-cliente/gestion-cliente.component';
 import { ClienteListComponent } from './cliente-list/cliente-list.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatNativeDateModule} from '@angular/material';
+import {MatNativeDateModule, MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
@@ -17,6 +17,7 @@ import { ClienteAccionComponent } from './cliente-accion/cliente-accion.componen
 import { ClienteNaturalFormComponent } from './cliente-form/cliente-natural-form/cliente-natural-form.component';
 import { ClienteJuridicoFormComponent } from './cliente-form/cliente-juridico-form/cliente-juridico-form.component';
 import { ClienteFormExtComponent } from './cliente-form/cliente-form-ext.component';
+import { ClienteDetailsComponent } from './cliente-details/cliente-details.component';
 
 @NgModule({
   imports: [
@@ -25,10 +26,16 @@ import { ClienteFormExtComponent } from './cliente-form/cliente-form-ext.compone
     FormsModule,
     MaterialModule,
     ReactiveFormsModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
   ],
   exports:[ClienteFormComponent, ClienteFormExtComponent],
   declarations: [ ClienteComponent, GestionClienteComponent, ClienteListComponent, ClienteFormComponent,
     ClienteDetailComponent, ClienteAccionComponent, ClienteNaturalFormComponent, ClienteJuridicoFormComponent,
-  ClienteFormExtComponent],
+  ClienteFormExtComponent,
+  ClienteDetailsComponent],
 })
 export class ClienteModule { }

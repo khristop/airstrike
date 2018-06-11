@@ -4,19 +4,15 @@
   <div class="col-md-12">
     <mat-list>
       <mat-list-item>
-        <button mat-raised-button color="primary" (click)="openCreateDialog()">
-          <mat-icon fontSet="fa" fontIcon="user"></mat-icon> Registrar nuevo usuario</button>
+        <button mat-raised-button color="800" (click)="openCreateDialog()">
+          <mat-icon>person_add</mat-icon> Registrar nuevo usuario</button>
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item>
-        <button mat-raised-button color="info">
-          <mat-icon fontSet="fa" fontIcon="list"></mat-icon> Gestionar perfiles</button>
+        <button mat-raised-button color="info" routerLink="app/rol">
+          <mat-icon >group_work</mat-icon> Gestionar perfiles</button>
       </mat-list-item>
       <mat-divider></mat-divider>
-      <mat-list-item>
-        <button mat-raised-button color="warn">
-          <mat-icon fontSet="fa" fontIcon="wrench"></mat-icon> Cambiar estado</button>
-      </mat-list-item>
     </mat-list>
   </div>
 </div>
