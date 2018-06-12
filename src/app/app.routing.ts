@@ -96,6 +96,11 @@ export const routes: Routes = [
         loadChildren: 'app/+miscellaneous/miscellaneous.module#MiscellaneousModule',
         data: {pageTitle: 'Miscellaneous'}
       },
+      {
+        path: 'admin',
+        loadChildren: 'app/+administracion/administracion.module#AdministracionModule',
+        data: { pageTitle: 'Administracion'}
+      },
       {path: '**', redirectTo: 'miscellaneous/error404'}
     ]
   },
