@@ -48,7 +48,7 @@ export class ClienteFormComponent implements OnInit {
     });
   }
 
-  onNoClick(): void {
+  onCerrar(): void {
     this.dialogRef.close();
   }
 
