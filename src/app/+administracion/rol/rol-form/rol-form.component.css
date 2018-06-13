@@ -1,0 +1,24 @@
+.cliente-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.cliente-form > .mat-form-field {
+  width: 100%;
+}
+
+.cliente-form form {
+  margin-bottom: 20px;
+}
+
+.cliente-form form > * {
+  margin: 5px 0;
+}
+
+.cliente-form .mat-radio-button {
+  margin: 0 5px;
+}
