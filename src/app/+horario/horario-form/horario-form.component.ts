@@ -44,7 +44,7 @@ export class HorarioFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder, 
     public dialogRef: MatDialogRef<HorarioFormComponent>,
-    //private _cliente_service: ClienteService,
+    private _horario_service: HorarioService,
   ) {
 
   }
@@ -58,23 +58,23 @@ export class HorarioFormComponent implements OnInit {
     floatLabel: 'auto',   // configuracion
     // inputs
     hora: horaControl,
-    abordaje: abordajeControl,
-    desabordaje: desabordajeControl,
+    tiempo_abordaje: abordajeControl,
+    tiempo_desabordaje: desabordajeControl,
 
   });
   }
   onNoClick(): void {
     this.dialogRef.close();
   }
-/*
+
   registrarAeropuerto(){
     console.log("registrar");
-    this._aeropuerto_service.guardar(this.aeropuertoForm.value).subscribe((res)=>{
+    this._horario_service.guardar(this.horarioForm.value).subscribe((res)=>{
       if(res){
         console.log("registrado con exito");
       }
     })
   }
-*/
+
 
 }

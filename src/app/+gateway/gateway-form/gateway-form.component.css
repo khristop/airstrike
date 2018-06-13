@@ -1,0 +1,25 @@
+.gateway-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  .gateway-form > .mat-form-field {
+    width: 100%;
+  }
+  
+  .gateway-form form {
+    margin-bottom: 20px;
+  }
+  
+  .gateway-form form > * {
+    margin: 5px 0;
+  }
+  
+  .gateway-form .mat-radio-button {
+    margin: 0 5px;
+  }
+  

@@ -16,7 +16,7 @@
                 <h4>Tiempo Abordaje:</h4>
               </div>
               <div class="col-md-8">
-                  <timepicker formControlName="abordaje" [(ngModel)]="mytime"></timepicker>
+                  <timepicker formControlName="tiempo_abordaje" [(ngModel)]="mytime2"></timepicker>
                 </div>
           </div>
           <div class="row">
@@ -24,7 +24,7 @@
                 <h4>Tiempo Desabordaje:</h4>
               </div>
               <div class="col-md-8">
-                  <timepicker formControlName="desabordaje" [(ngModel)]="mytime"></timepicker>
+                  <timepicker formControlName="tiempo_desabordaje" [(ngModel)]="mytime3"></timepicker>
                 </div>
           </div>
           </form>
@@ -35,6 +35,7 @@
 </div>
 
 <div mat-dialog-actions>
+  
   <button mat-button (click)="onCerrar()">Cerrar</button>
   <button mat-button color="success" cdkFocusInitial [disabled]="!horarioForm.valid" (click)="registrarHorario()">Registrar</button>
 </div>

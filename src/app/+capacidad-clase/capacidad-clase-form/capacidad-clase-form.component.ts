@@ -19,7 +19,7 @@ export class CapacidadClaseFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder, 
     public dialogRef: MatDialogRef<CapacidadClaseFormComponent>,
-    //private _cliente_service: ClienteService,
+    private _capacidad_clase_service: CapacidadClaseService,
   ) {
 
   }
@@ -32,23 +32,23 @@ export class CapacidadClaseFormComponent implements OnInit {
     floatLabel: 'auto',   // configuracion
     // inputs
     cantidad: cantidadControl,
-    clases: clasesControl,
-    modelo_avion: modelo_avionControl,
+    id_clases: clasesControl,
+    modelo_avion_id: modelo_avionControl,
 
   });
   }
   onNoClick(): void {
     this.dialogRef.close();
   }
-/*
+
   registrarAeropuerto(){
     console.log("registrar");
-    this._aeropuerto_service.guardar(this.aeropuertoForm.value).subscribe((res)=>{
+    this._capacidad_clase_service.guardar(this.capacidad_claseForm.value).subscribe((res)=>{
       if(res){
         console.log("registrado con exito");
       }
     })
   }
-*/
+
 
 }

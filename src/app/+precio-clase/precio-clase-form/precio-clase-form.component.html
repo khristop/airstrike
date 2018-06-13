@@ -6,7 +6,7 @@
           <div class="row">
             <div class="col-md-6">
               <mat-form-field>
-                <mat-select formControlName="clase">
+                <mat-select formControlName="tipo_clase_id">
                   <mat-option>-- Seleccione --</mat-option>
                   <mat-option value="1">clase 1</mat-option>
                   <mat-option value="2">clase 2</mat-option>
@@ -20,7 +20,7 @@
             </div>
               <div class="col-md-6">
                   <mat-form-field>
-                    <mat-select formControlName="programacion">
+                    <mat-select formControlName="programacion_vuelo_id">
                       <mat-option>-- Seleccione --</mat-option>
                       <mat-option value="1">programacion 1</mat-option>
                       <mat-option value="2">programacion 2</mat-option>
@@ -49,7 +49,7 @@
               
                 <div class="col-md-6">
                   <mat-form-field>
-                    <input matInput type="number" placeholder="maleta" formControlName="maleta" min="1">
+                    <input matInput type="number" placeholder="maleta" formControlName="precio_maleta" min="1">
                     <!--<mat-error *ngIf="options.get('fontSize')?.invalid">Asientos minimos 1</mat-err>-->
                     <mat-label>
                       <mat-icon>attach_money</mat-icon>

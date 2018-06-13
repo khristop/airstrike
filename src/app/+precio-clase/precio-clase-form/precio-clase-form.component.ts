@@ -19,7 +19,7 @@ export class PrecioClaseFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder, 
     public dialogRef: MatDialogRef<PrecioClaseFormComponent>,
-    //private _cliente_service: ClienteService,
+    private _precio_clase_service: PrecioClaseService,
   ) {
 
   }
@@ -32,25 +32,25 @@ export class PrecioClaseFormComponent implements OnInit {
     hideRequired: false,  // configuracion
     floatLabel: 'auto',   // configuracion
     // inputs
-    clase: claseControl,
-    programacion: programacionControl,
+    tipo_clase_id: claseControl,
+    programacion_vuelo_id: programacionControl,
     precio: precioControl,
-    maleta: maletaControl,
+    precio_maleta: maletaControl,
 
   });
   }
   onNoClick(): void {
     this.dialogRef.close();
   }
-/*
-  registrarAeropuerto(){
+
+  registrarPrecioClase(){
     console.log("registrar");
-    this._aeropuerto_service.guardar(this.aeropuertoForm.value).subscribe((res)=>{
+    this._precio_clase_service.guardar(this.precio_claseForm.value).subscribe((res)=>{
       if(res){
         console.log("registrado con exito");
       }
     })
   }
-*/
+
 
 }

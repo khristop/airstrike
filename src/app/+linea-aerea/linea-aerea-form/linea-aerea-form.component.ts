@@ -19,7 +19,7 @@ export class LineaAereaFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder, 
     public dialogRef: MatDialogRef<LineaAereaFormComponent>,
-    //private _cliente_service: ClienteService,
+    private _linea_aerea_service: LineaAereaService,
   ) {
 
   }
@@ -39,24 +39,24 @@ export class LineaAereaFormComponent implements OnInit {
     nombre_oficial: nombre_oficialControl,
     nombre_corto: nombre_cortoControl,
     representante: representanteControl,
-    fundacion: fundacionControl,
+    fecha_fundacion: fundacionControl,
     codigo_pais: codigo_paisControl,
-    correo: correoControl,
-    web: webControl,
+    correo_electronico: correoControl,
+    pagina_web: webControl,
   });
   }
   onNoClick(): void {
     this.dialogRef.close();
   }
-/*
-  registrarAeropuerto(){
+
+  registrarLineaAerea(){
     console.log("registrar");
-    this._aeropuerto_service.guardar(this.aeropuertoForm.value).subscribe((res)=>{
+    this._linea_aerea_service.guardar(this.linea_aereaForm.value).subscribe((res)=>{
       if(res){
         console.log("registrado con exito");
       }
     })
   }
-*/
+
 
 }
