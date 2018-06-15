@@ -19,7 +19,7 @@ export class AvionFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder, 
     public dialogRef: MatDialogRef<AvionFormComponent>,
-    //private _cliente_service: ClienteService,
+    private _avion_service: AvionService,
   ) {
 
   }
@@ -33,24 +33,24 @@ export class AvionFormComponent implements OnInit {
     floatLabel: 'auto',   // configuracion
     // inputs
     placa: placaControl,
-    tipo_avion: tipo_avionControl,
-    linea_aerea: linea_aereaControl,
-    modelo_avion: modelo_avionControl,
+    tipo_avion_id: tipo_avionControl,
+    linea_aerea_codigo: linea_aereaControl,
+    modelo_avion_id: modelo_avionControl,
 
   });
   }
   onNoClick(): void {
     this.dialogRef.close();
   }
-/*
+
   registrarAeropuerto(){
     console.log("registrar");
-    this._aeropuerto_service.guardar(this.aeropuertoForm.value).subscribe((res)=>{
+    this._avion_service.guardar(this.avionForm.value).subscribe((res)=>{
       if(res){
         console.log("registrado con exito");
       }
     })
   }
-*/
+
 
 }

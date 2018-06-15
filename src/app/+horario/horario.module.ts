@@ -11,6 +11,10 @@ import {BrowserModule} from '@angular/platform-browser';
 import {MaterialModule} from '../shared/layout/material/material.module';
 import { HorariosComponent } from './horario.component';
 import { HorarioFormComponent } from './horario-form/horario-form.component';
+import {MatInputModule} from '@angular/material';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+
+
 
 @NgModule({
   imports: [
@@ -19,6 +23,8 @@ import { HorarioFormComponent } from './horario-form/horario-form.component';
     FormsModule,
     MaterialModule,
     ReactiveFormsModule,
+    MatInputModule,
+    TimepickerModule.forRoot(), 
   ],
   declarations: [HorariosComponent, HorarioListComponent, HorarioFormComponent]
 })

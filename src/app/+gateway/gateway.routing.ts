@@ -1,9 +1,8 @@
 import { Routes, RouterModule } from '@angular/router';
 import {ModuleWithProviders} from '@angular/core';
-//import {ViajClienteComponentarComponent} from './viajar.component';
 import {GatewayComponent} from './gateway.component';
-//import {GestionClienteComponent} from './gestion-cliente/gestion-cliente.component';
 import {GatewayListComponent} from './gateway-list/gateway-list.component';
+import {GatewayFormComponent} from './gateway-form/gateway-form.component';
 
 export const gatewayRoutes: Routes = [
     {
@@ -18,6 +17,13 @@ export const gatewayRoutes: Routes = [
         component: GatewayListComponent,
         data: {
             pageTitle: 'Lista de gateway'
+        }
+    },
+    {
+        path: 'gestion',
+        component: GatewayFormComponent,
+        data: {
+            pageTitle: 'Formulario de gateway'
         }
     },
 ];

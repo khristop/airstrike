@@ -10,6 +10,7 @@ import {MaterialModule} from '../shared/layout/material/material.module';
 import { PrecioClaseComponent } from './precio-clase.component';
 import {PrecioClaseRouting} from './precio-clase.routing';
 import {AirStrikeModule} from '../shared/airstrike.module';
+import { PrecioClaseFormComponent } from './precio-clase-form/precio-clase-form.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import {AirStrikeModule} from '../shared/airstrike.module';
     MaterialModule,
     ReactiveFormsModule,
   ],
-  declarations: [PrecioClaseListComponent,PrecioClaseComponent]
+  declarations: [PrecioClaseListComponent,PrecioClaseComponent, PrecioClaseFormComponent]
 })
 export class PrecioClaseModule { }

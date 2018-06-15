@@ -19,7 +19,7 @@ export class AeropuertoFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder, 
     public dialogRef: MatDialogRef<AeropuertoFormComponent>,
-    //private _cliente_service: ClienteService,
+    private _aeropuerto_service: AeropuertoService,
   ) {
 
   }
@@ -44,7 +44,7 @@ export class AeropuertoFormComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
-/*
+
   registrarAeropuerto(){
     console.log("registrar");
     this._aeropuerto_service.guardar(this.aeropuertoForm.value).subscribe((res)=>{
@@ -53,6 +53,6 @@ export class AeropuertoFormComponent implements OnInit {
       }
     })
   }
-*/
+
 
 }

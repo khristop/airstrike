@@ -10,6 +10,7 @@ import {MaterialModule} from '../shared/layout/material/material.module';
 import { ModeloAvionComponent } from './modelo-avion.component';
 import {ModeloAvionRouting} from './modelo-avion.routing';
 import {AirStrikeModule} from '../shared/airstrike.module';
+import { ModeloAvionFormComponent } from './modelo-avion-form/modelo-avion-form.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import {AirStrikeModule} from '../shared/airstrike.module';
     MaterialModule,
     ReactiveFormsModule,
   ],
-  declarations: [ModeloAvionListComponent, ModeloAvionComponent ]
+  declarations: [ModeloAvionListComponent, ModeloAvionComponent, ModeloAvionFormComponent ]
 })
 export class ModeloAvionModule { }

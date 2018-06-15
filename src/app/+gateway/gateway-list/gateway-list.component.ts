@@ -1,5 +1,7 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatDialog} from '@angular/material';
+import { GatewayFormComponent } from '../gateway-form/gateway-form.component';
 
 @Component({
   selector: 'airstrike-gateway-list',
@@ -13,7 +15,11 @@ export class GatewayListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor() {
+  //cosas del form
+  @ViewChild('dialogCreate') dialogCreate: TemplateRef<any>;
+  dialogRef;
+
+  constructor(private _dialog: MatDialog){
     // Create 100 users
     const users: UserData[] = [];
     for (let i = 1; i <= 100; i++) {
@@ -22,6 +28,21 @@ export class GatewayListComponent implements OnInit {
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(users);
+  }
+  
+//mas cosas del form
+  openCreateDialog(): void {
+    this.dialogRef = this._dialog.open( GatewayFormComponent , {
+      width: '850px',
+    });
+
+    this.dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialogo cerrado');
+    });
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
   ngOnInit() {

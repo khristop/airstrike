@@ -31,6 +31,7 @@ export class ClienteService {
       cliente => this.clienteSource.next(cliente),
       err => console.log(err) );
   }
+  //importante!!!!
   obtener(id: number, filtro?: String ) {
     const url = filtro ? this.resourceUrl + id + filtro : this.resourceUrl + id ;
     return this.http.get( url ).pipe(
