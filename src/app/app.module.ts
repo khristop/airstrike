@@ -38,12 +38,14 @@ type StoreType = {
     CoreModule,
     ModalModule.forRoot(),
     AirstrikeLayoutModule,
-    routing
+    routing,
+  ],
+  exports: [
   ],
   providers: [
-    APP_PROVIDERS
-  ],
+    APP_PROVIDERS,]
 })
+
 export class AppModule {
   constructor(public appRef: ApplicationRef, public appState: AppState) {}
 }

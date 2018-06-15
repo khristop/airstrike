@@ -1,0 +1,53 @@
+<h1 mat-dialog-title>Registro de Rol</h1>
+<div mat-dialog-content>
+  <div class="container-fluid">
+    <div class="rol-form">
+      <form class="rol-form" [formGroup]="rolForm">
+
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field [hideRequiredMarker]="rolForm.value.hideRequired" [floatLabel]="rolForm.value.floatLabel">
+              <input matInput formControlName="nombre" placeholder="Ingrese el nombre del rol">
+              <mat-label>
+                <mat-icon>user</mat-icon>
+                Nombre
+              </mat-label>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-6">
+            <mat-form-field>
+              <mat-select formControlName="tipo">
+                <mat-option>-- Seleccione --</mat-option>
+                <mat-option value="soltero">Administrador</mat-option>
+                <mat-option value="casado">Usuario</mat-option>
+              </mat-select>
+              <mat-label>
+                <mat-icon>wc</mat-icon>
+                Tipo de rol
+              </mat-label>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <mat-form-field [hideRequiredMarker]="rolForm.value.hideRequired" [floatLabel]="rolForm.value.floatLabel">
+              <textarea matInput placeholder="Ingrese la direccion"></textarea>
+              <mat-label>
+                <mat-icon>location_city</mat-icon>
+                Direccion
+              </mat-label>
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+    </div>
+    <pre>{{ rolForm.value | json }}</pre>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onCerrar()">Cerrar</button>
+  <button mat-button color="success" cdkFocusInitial [disabled]="!rolForm.valid" (click)="registrarRol()">Registrar</button>
+</div>

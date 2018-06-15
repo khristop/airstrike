@@ -12,23 +12,27 @@
 
     <ul saSmartMenu>
       <li routerLinkActive="active">
-        <a routerLink="/home" title="Home">
-          <i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">{{'Home' | i18n}}</span></a>
+        <a routerLink="/app/home" title="Home">
+          <i class="fa fa-lg fa-fw fa-home"></i>
+          <span class="menu-item-parent">{{'Home' | i18n}}</span>
+        </a>
       </li>
 
       <li routerLinkActive="active">
-        <a routerLink="/viajar" title="Viajar">
-          <i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">{{'Travel' | i18n}}</span></a>
+        <a routerLink="/app/viajar" title="Viajar">
+          <i class="fa fa-lg fa-fw fa-home"></i>
+          <span class="menu-item-parent">{{'Travel' | i18n}}</span>
+        </a>
 
         <ul>
           <li routerLinkActive="active">
-            <a routerLink="/tables/normal">{{'Mis viajes' | i18n}}</a>
+            <a routerLink="/app/tables/normal">{{'Mis viajes' | i18n}}</a>
           </li>
           <li routerLinkActive="active">
-            <a routerLink="/tables/datatables">{{'Viajar' | i18n}} </a>
+            <a routerLink="/app/tables/datatables">{{'Viajar' | i18n}} </a>
           </li>
           <li routerLinkActive="active">
-            <a routerLink="/tables/ngx-datatable">{{'Historial' | i18n}} </a>
+            <a routerLink="/app/tables/ngx-datatable">{{'Historial' | i18n}} </a>
           </li>
         </ul>
 
@@ -36,17 +40,19 @@
 
       <li routerLinkActive="active">
         <a title="Cliente">
-          <i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">{{'Client' | i18n}}</span></a>
+          <i class="fa fa-lg fa-fw fa-home"></i>
+          <span class="menu-item-parent">{{'Client' | i18n}}</span>
+        </a>
 
         <ul>
           <li routerLinkActive="active">
-            <a routerLink="/cliente">{{'Clients wallet' | i18n}}</a>
+            <a routerLink="/app/cliente">{{'Clients wallet' | i18n}}</a>
           </li>
           <li routerLinkActive="active">
-            <a routerLink="/tables/datatables">{{'Permisos' | i18n}} </a>
+            <a routerLink="/app/tables/datatables">{{'Permisos' | i18n}} </a>
           </li>
           <li routerLinkActive="active">
-            <a routerLink="/tables/ngx-datatable">{{'Roles' | i18n}} </a>
+            <a routerLink="/app/tables/ngx-datatable">{{'Roles' | i18n}} </a>
           </li>
         </ul>
 
@@ -54,17 +60,19 @@
 
       <li routerLinkActive="active">
         <a title="Aeropuertos">
-          <i class="fa fa-plane"></i> <span class="menu-item-parent">{{'Aeropuertos' | i18n}}</span></a>
+          <i class="fa fa-plane"></i>
+          <span class="menu-item-parent">{{'Aeropuertos' | i18n}}</span>
+        </a>
 
         <ul>
           <li routerLinkActive="active">
-            <a routerLink="/gateway/lista">{{'Gateway' | i18n}}</a>
+            <a routerLink="/app/gateway/lista">{{'Gateway' | i18n}}</a>
           </li>
           <li routerLinkActive="active">
-            <a routerLink="/aeropuertos/lista">{{'Aeropuertos' | i18n}} </a>
+            <a routerLink="/app/aeropuertos/lista">{{'Aeropuertos' | i18n}} </a>
           </li>
           <li routerLinkActive="active">
-            <a routerLink="/horarios/lista">{{'Horarios' | i18n}} </a>
+            <a routerLink="/app/horarios/lista">{{'Horarios' | i18n}} </a>
           </li>
         </ul>
 
@@ -72,51 +80,77 @@
       <!--Menu generales-->
       <li routerLinkActive="active">
         <a title="Generales">
-          <i class="fa fa-globe"></i> <span class="menu-item-parent">{{'Generales' | i18n}}</span></a>
+          <i class="fa fa-globe"></i>
+          <span class="menu-item-parent">{{'Generales' | i18n}}</span>
+        </a>
 
         <ul>
           <li routerLinkActive="active">
-            <a routerLink="/pais/lista">{{'Pais' | i18n}}</a>
+            <a routerLink="/app/pais/lista">{{'Pais' | i18n}}</a>
           </li>
           <li routerLinkActive="active">
-            <a routerLink="/ciudad/lista">{{'Ciudad' | i18n}} </a>
+            <a routerLink="/app/ciudad/lista">{{'Ciudad' | i18n}} </a>
           </li>
           <li routerLinkActive="active">
-            <a routerLink="/modelo-avion/lista">{{'Modelos de avion' | i18n}} </a>
+            <a routerLink="/app/modelo-avion/lista">{{'Modelos de avion' | i18n}} </a>
           </li>
           <li routerLinkActive="active">
-            <a routerLink="/precio-clase/lista">{{'Precio de las clases' | i18n}} </a>
+            <a routerLink="/app/precio-clase/lista">{{'Precio de las clases' | i18n}} </a>
           </li>
           <li routerLinkActive="active">
-            <a routerLink="/tipo-clase/lista">{{'Tipos de clases' | i18n}} </a>
+            <a routerLink="/app/tipo-clase/lista">{{'Tipos de clases' | i18n}} </a>
           </li>
           <li routerLinkActive="active">
-            <a routerLink="/capacidad-clase/lista">{{'Capacidad de las clases' | i18n}} </a>
+            <a routerLink="/app/capacidad-clase/lista">{{'Capacidad de las clases' | i18n}} </a>
           </li>
           <li routerLinkActive="active">
-            <a routerLink="/tipo-avion/lista">{{'Tipos de avión' | i18n}} </a>
+            <a routerLink="/app/tipo-avion/lista">{{'Tipos de avión' | i18n}} </a>
           </li>
         </ul>
 
       </li>
-<!--Menu Linea Aerea-->
-<li routerLinkActive="active">
-  <a title="Lineas Aereas">
-    <i class="fa fa-paper-plane"></i> <span class="menu-item-parent">{{'Lineas Aéreas' | i18n}}</span></a>
+      <!--Menu Linea Aerea-->
+      <li routerLinkActive="active">
+        <a title="Lineas Aereas">
+          <i class="fa fa-paper-plane"></i>
+          <span class="menu-item-parent">{{'Lineas Aéreas' | i18n}}</span>
+        </a>
 
-  <ul>
-    <li routerLinkActive="active">
-      <a routerLink="/linea-aerea/lista">{{'Linea Aerea' | i18n}}</a>
-    </li>
-    <li routerLinkActive="active">
-      <a routerLink="/contacto/lista">{{'Contacto' | i18n}} </a>
-    </li>
-    <li routerLinkActive="active">
-      <a routerLink="/avion/lista">{{'Avión' | i18n}} </a>
-    </li>
-  </ul>
+        <ul>
+          <li routerLinkActive="active">
+            <a routerLink="/app/linea-aerea/lista">{{'Linea Aerea' | i18n}}</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/app/contacto/lista">{{'Contacto' | i18n}} </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/app/avion/lista">{{'Avión' | i18n}} </a>
+          </li>
+        </ul>
 
-</li>
+      </li>
+
+
+      <!--Menu Linea Aerea-->
+      <li routerLinkActive="active">
+        <a title="Administracion">
+          <i class="fa fa-paper-plane"></i>
+          <span class="menu-item-parent">{{'Administracion' | i18n}}</span>
+        </a>
+
+        <ul>
+          <li routerLinkActive="active">
+            <a routerLink="/app/admin/usuario">{{'Usuarios' | i18n}}</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/app/admin/rol">{{'Roles' | i18n}} </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/app/admin/config">{{'Configuraciones' | i18n}} </a>
+          </li>
+        </ul>
+
+      </li>
 
     </ul>
   </nav>

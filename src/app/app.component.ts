@@ -5,6 +5,6 @@ import {Component, ViewContainerRef} from '@angular/core';
   template: '<router-outlet></router-outlet>' //  <router-outlet></router-outlet>
 })
 export class AppComponent {
-  title = 'airstrike works';
+  title = 'airstrike';
   public constructor(private viewContainerRef: ViewContainerRef) {}
 }
