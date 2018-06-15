@@ -1,0 +1,60 @@
+<h1 mat-dialog-title>Registro de Aviones</h1>
+<div mat-dialog-content>
+  <div class="container-fluid">
+    <div class="modelo-avion-form">
+      <form class="modelo-avion-form" [formGroup]="modelo_avionForm">
+          <div class="row">
+              <div class="col-md-6">
+                <mat-form-field>
+                  <input matInput formControlName="nombre_modelo" placeholder="ingrese el nombre del modelo del avion">
+                  <mat-label>
+                    <mat-icon>airplanemode_active</mat-icon>
+                    Nombre modelo de avión
+                  </mat-label>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field>
+                  <input matInput formControlName="marca" placeholder="ingrese la marca del modelo del avion">
+                  <mat-label>
+                    <mat-icon>assignment</mat-icon>
+                    Marca
+                  </mat-label>
+                </mat-form-field>
+              </div>
+            </div>
+           
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field>
+                      <input matInput type="number" placeholder="Maletas" formControlName="cantidad_maletas" min="0">
+                      <!--<mat-error *ngIf="options.get('fontSize')?.invalid">No puede ser menor a cero</mat-err>-->
+                      <mat-label>
+                        <mat-icon>business_center</mat-icon>
+                        Maletas
+                      </mat-label>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field>
+                      <input matInput type="number" placeholder="Asientos" formControlName="cantidad_asientos" min="1">
+                      <!--<mat-error *ngIf="options.get('fontSize')?.invalid">Asientos minimos 1</mat-err>-->
+                      <mat-label>
+                        <mat-icon>airline_seat_recline_normal</mat-icon>
+                        Asientos
+                      </mat-label>
+                    </mat-form-field>
+                  </div>
+            </div>
+          
+      </form>
+    </div>
+    <pre>{{ modelo_avionForm.value | json }}</pre>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onCerrar()">Cerrar</button>
+  <button mat-button color="success" cdkFocusInitial [disabled]="!modelo_avionForm.valid" (click)="registrarModeloAvion()">Registrar</button>
+</div>

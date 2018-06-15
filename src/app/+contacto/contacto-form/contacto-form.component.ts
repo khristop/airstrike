@@ -19,7 +19,7 @@ export class ContactoFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder, 
     public dialogRef: MatDialogRef<ContactoFormComponent>,
-    //private _cliente_service: ClienteService,
+    private _cliente_service: ContactoService,
   ) {
 
   }
@@ -32,8 +32,8 @@ export class ContactoFormComponent implements OnInit {
     floatLabel: 'auto',   // configuracion
     // inputs
     id_contacto: id_contactoControl,
-    web: webControl,
-    linea_aerea: linea_aereaControl,
+    direccion_web: webControl,
+    linea_aerea_codigo: linea_aereaControl,
     nombre: nombreControl,
 
   });

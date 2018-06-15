@@ -10,6 +10,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
 import {MaterialModule} from '../shared/layout/material/material.module';
 import { GatewayComponent } from './gateway.component';
+import { GatewayFormComponent } from './gateway-form/gateway-form.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import { GatewayComponent } from './gateway.component';
     MaterialModule,
     ReactiveFormsModule,
   ],
-  declarations: [GatewayListComponent, GatewayComponent]
+  declarations: [GatewayListComponent, GatewayComponent, GatewayFormComponent]
 })
 export class GatewayModule { }

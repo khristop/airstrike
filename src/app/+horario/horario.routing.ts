@@ -2,6 +2,8 @@ import { Routes, RouterModule } from '@angular/router';
 import {ModuleWithProviders} from '@angular/core';
 import {HorariosComponent} from './horario.component';
 import {HorarioListComponent} from './horario-list/horario-list.component';
+import {HorarioFormComponent} from './horario-form/horario-form.component';
+
 
 export const horarioRoutes: Routes = [
     {
@@ -16,6 +18,13 @@ export const horarioRoutes: Routes = [
         component: HorarioListComponent,
         data: {
             pageTitle: 'Lista de Horarios'
+        }
+    },
+    {
+        path: 'gestion',
+        component: HorarioFormComponent,
+        data: {
+            pageTitle: 'Formulario de Horarios'
         }
     },
 ];

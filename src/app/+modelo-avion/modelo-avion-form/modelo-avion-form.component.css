@@ -1,0 +1,25 @@
+.modelo-avion-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  .modelo-avion-form > .mat-form-field {
+    width: 100%;
+  }
+  
+  .modelo-avion-form form {
+    margin-bottom: 20px;
+  }
+  
+  .modelo-avion-form form > * {
+    margin: 5px 0;
+  }
+  
+  .modelo-avion-form .mat-radio-button {
+    margin: 0 5px;
+  }
+  

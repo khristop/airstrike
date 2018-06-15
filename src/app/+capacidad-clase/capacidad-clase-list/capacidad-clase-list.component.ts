@@ -1,5 +1,7 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatDialog} from '@angular/material';
+import { CapacidadClaseFormComponent } from '../capacidad-clase-form/capacidad-clase-form.component';
 
 @Component({
   selector: 'airstrike-capacidad-clase-list',
@@ -13,7 +15,11 @@ export class CapacidadClaseListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor() {
+  //cosas del form
+  @ViewChild('dialogCreate') dialogCreate: TemplateRef<any>;
+  dialogRef;
+
+  constructor(private _dialog: MatDialog)  {
     // Create 100 users
     const users: UserData[] = [];
     for (let i = 1; i <= 100; i++) {
@@ -24,6 +30,16 @@ export class CapacidadClaseListComponent implements OnInit {
     this.dataSource = new MatTableDataSource(users);
   }
 
+  //mas cosas del form
+  openCreateDialog(): void {
+    this.dialogRef = this._dialog.open( CapacidadClaseFormComponent , {
+      width: '850px',
+    });
+
+    this.dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialogo cerrado');
+    });
+  }
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
