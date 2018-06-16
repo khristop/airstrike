@@ -4,6 +4,8 @@ export const config: any = {
 
   API_URL: 'assets/api',
 
+  REST_URL: 'http://localhost/backair/airstrike/api/',
+
   menu_speed: 200,
 
   smartSkin: 'smart-style-0',
