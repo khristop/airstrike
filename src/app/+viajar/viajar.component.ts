@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-viajar',
-  template: `<h1>ViajarModule</h1>`,
+  template: `<app-viajar-form></app-viajar-form>`,
   styles: ['']
 })
 export class ViajarComponent implements OnInit {

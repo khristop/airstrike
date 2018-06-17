@@ -4,13 +4,20 @@ import { homeRouting } from './home.routing';
 
 import {HomeComponent} from './home.component';
 import {AirStrikeModule} from '../shared/airstrike.module';
+import { AlertModule } from 'ngx-bootstrap';
+import { SmartadminWizardsModule } from '../shared/forms/wizards/smartadmin-wizards.module';
+import { ViajarModule } from '../+viajar/viajar.module';
 
 @NgModule({
   imports: [
     CommonModule,
     homeRouting,
-    AirStrikeModule
+    AirStrikeModule,
+    AlertModule,
+    SmartadminWizardsModule,
+    ViajarModule
   ],
-  declarations: [HomeComponent]
+  declarations: [HomeComponent],
+  exports: [HomeComponent]
 })
 export class HomeModule { }

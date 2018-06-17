@@ -4,7 +4,7 @@ import {ViajarComponent} from './viajar.component';
 
 export const viajarRoutes: Routes = [
     {
-        path: '',
+        path: 'registro',
         component: ViajarComponent,
         data: {
             pageTitle: 'Viajar'
