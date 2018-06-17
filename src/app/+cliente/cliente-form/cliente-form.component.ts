@@ -45,6 +45,7 @@ export class ClienteFormComponent implements OnInit {
       tipo_cliente: tipoClienteControl,
       detalle_natural: this.fb.group({}),
       detalle_empresa: this.fb.group({}),
+      usuario: this.fb.group({}),
     });
   }
 

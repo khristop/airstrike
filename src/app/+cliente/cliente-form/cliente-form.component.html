@@ -59,19 +59,15 @@
               </mat-form-field>
             </div>
           </div>
-
-        </ng-container>
-
-        <div class="row">
-          <div class="col-md-12">
-            <h3 class="subheading-2">Informacion del usuario</h3>
+          <div class="row">
+            <div class="col-md-12">
+              <h3 class="subheading-2">Informacion del usuario</h3>
+            </div>
           </div>
-        </div>
-
-
+          <app-usuario-form [usuarioForm]="clienteForm.get('usuario')"></app-usuario-form>
+        </ng-container>
       </form>
     </div>
-    <pre>{{ clienteForm.value | json }}</pre>
   </div>
 </div>
 
