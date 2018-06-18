@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import { MatDialogRef } from '@angular/material';
 import { ClienteService } from '../../core/rest/cliente/cliente.service';
+import { NotificationService } from '../../shared/utils/notification.service';
 
 @Component({
   selector: 'app-cliente-form-ext',
@@ -19,6 +19,7 @@ export class ClienteFormExtComponent implements OnInit {
 
   constructor(private fb: FormBuilder, 
     private _cliente_service: ClienteService,
+    private notificationService: NotificationService
   ) {
 
   }
@@ -44,14 +45,27 @@ export class ClienteFormExtComponent implements OnInit {
       tipo_cliente: tipoClienteControl,
       detalle_natural: this.fb.group({}),
       detalle_empresa: this.fb.group({}),
+      usuario: this.fb.group({}),
     });
+    this.clienteForm.addControl('primer_nombre', this.fb.control('', [Validators.required]));
+    this.clienteForm.addControl('segundo_nombre', this.fb.control('', [ Validators.required]));
+    this.clienteForm.addControl('primer_apellido', this.fb.control('', [ Validators.required]));
+    this.clienteForm.addControl('segundo_apellido', this.fb.control('', [ Validators.required]));
+ 
   }
 
   registrarCliente(){
-    console.log("registrar");
     this._cliente_service.guardar(this.clienteForm.value).subscribe((res)=>{
       if(res){
-        console.log("registrado con exito");
+        this.clienteForm.reset();
+        this.notificationService.bigBox({
+          title: "Registrado con exito",
+          content: "Se registro con exito, ya puede ingresar a la aplicacion",
+          color: "#C79121",
+          timeout: 8000,
+          icon: "fa fa-check",
+        });
+
       }
     })
   }

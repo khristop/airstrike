@@ -9,7 +9,7 @@ import { ClienteService } from '../../core/rest/cliente/cliente.service';
   styleUrls: ['./cliente-list.component.css']
 })
 export class ClienteListComponent implements OnInit {
-  columnas = ['id_usuario', 'primer_nombre', 'primer_apellido', 'num_viajero', 'action'];
+  columnas = ['id_usuario','username', 'primer_nombre', 'nombre_empresa' , 'num_viajero', 'millas','action'];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

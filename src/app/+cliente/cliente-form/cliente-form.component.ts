@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 import { ClienteService } from '../../core/rest/cliente/cliente.service';
-import { RolService } from '../../core/rest/auth/rol.service';
+import { NotificationService } from '../../shared/utils/notification.service';
 
 @Component({
   selector: 'app-cliente-form',
@@ -21,6 +21,7 @@ export class ClienteFormComponent implements OnInit {
   constructor(private fb: FormBuilder, 
     public dialogRef: MatDialogRef<ClienteFormComponent>,
     private _cliente_service: ClienteService,
+    private notificationService: NotificationService
   ) {
 
   }
@@ -62,7 +63,16 @@ export class ClienteFormComponent implements OnInit {
     console.log("registrar");
     this._cliente_service.guardar(this.clienteForm.value).subscribe((res)=>{
       if(res){
-        console.log("registrado con exito");
+        this.dialogRef.close();
+        this.notificationService.bigBox({
+          title: "Registrado con exito",
+          content: "Se registro el cliente con exito, ya puede ingresar a la aplicacion",
+          color: "#C79121",
+          timeout: 8000,
+          icon: "fa fa-check",
+        
+        });
+
       }
     })
   }

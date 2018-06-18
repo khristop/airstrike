@@ -17,6 +17,7 @@ export class ApiInterceptor implements HttpInterceptor {
                 Accept: 'application/json',
             }
         })
+        
         if (!req.headers.has('Content-Type')) { //solo dejara el contenido por defecto si no se envian archivos
             if ( !(req.body && req.body.has && req.body.has('file') )){
                 req = req.clone({ headers: req.headers.set('Content-Type', 'application/json') });

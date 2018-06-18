@@ -14,6 +14,7 @@ import { ApiInterceptor } from './interceptor/api.interceptor';
 import { AuthGuard } from './guards/auth-guard.service';
 import { AirstrikeService } from './rest/airstrike.service';
 import { RolService } from './rest/auth/rol.service';
+import { EstadoUserService } from './rest/auth/estado-user.service';
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { RolService } from './rest/auth/rol.service';
     AuthGuard,
     AirstrikeService,
     RolService,
+    EstadoUserService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ApiInterceptor,

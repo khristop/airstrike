@@ -1,25 +1,22 @@
 <div class="grid-container">
   <div class="row">
     <div class="col-md-1">
-        <button mat-icon-button color="primary" routerLink="/app/cliente">
-          <mat-icon aria-label="Regresar a lista de clientes">chevron_left</mat-icon> Regresar
-        </button>
+      <button mat-icon-button color="primary" routerLink="/app/cliente">
+        <mat-icon aria-label="Regresar a lista de clientes">chevron_left</mat-icon> Regresar
+      </button>
     </div>
     <div class="col-md-10 text-center">
-        <h1 class="mat-h1">
-            Cliente XXXX
-         </h1>
+      <h1 class="mat-h1">
+        Cliente {{ cliente && cliente.username ? cliente.username : "XXXXX"}}
+      </h1>
     </div>
   </div>
-  <mat-grid-list cols="2" rowHeight="350px">
-    <mat-grid-tile *ngFor="let card of cards" [colspan]="card.cols" [rowspan]="card.rows">
+  <mat-grid-list cols="6">
+    <mat-grid-tile [colspan]="2" [rowspan]="3">
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
-            {{card.title}}
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
+            Informacion del cliente
             <mat-menu #menu="matMenu" xPosition="before">
               <button mat-menu-item>Expand</button>
               <button mat-menu-item>Remove</button>
@@ -27,9 +24,145 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <div>Card Content Here</div>
+          <div class="row text-left">
+            <div class="col-md-6">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <b>direccion</b>
+                  <span> {{ cliente && cliente.direccion ? cliente.direccion: 'no registrado'}} </span>
+                </li>
+                <li class="list-group-item">
+                  <b>estado_civil</b>
+                  <span> {{ cliente && cliente.estado_civil ? cliente.estado_civil: 'no registrado'}} </span>
+                </li>
+                <li class="list-group-item">
+                  <b>fecha_nacimiento</b>
+                  <span> {{ cliente && cliente.fecha_nacimiento ? cliente.fecha_nacimiento: 'no registrado'}} </span>
+                </li>
+                <li class="list-group-item">
+                  <b>genero</b>
+                  <span> {{ cliente && cliente.genero ? cliente.genero: 'no registrado'}} </span>
+                </li>
+                <li class="list-group-item">
+                  <b>id_c_empresa</b>
+                  <span> {{ cliente && cliente.id_c_empresa ? cliente.id_c_empresa: 'no registrado'}} </span>
+                </li>
+                <li class="list-group-item">
+                  <b>id_estado</b>
+                  <span> {{ cliente && cliente.id_estado ? cliente.id_estado: 'no registrado'}} </span>
+                </li>
+                <li class="list-group-item">
+                  <b>id_natural</b>
+                  <span> {{ cliente && cliente.id_natural ? cliente.id_natural: 'no registrado'}} </span>
+                </li>
+                <li class="list-group-item">
+                  <b>id_rol</b>
+                  <span> {{ cliente && cliente.id_rol ? cliente.id_rol: 'no registrado'}} </span>
+                </li>
+                <li class="list-group-item">
+                  <b>id_usuario</b>
+                  <span> {{ cliente && cliente.id_usuario ? cliente.id_usuario: 'no registrado'}} </span>
+                </li>
+                <li class="list-group-item">
+                  <b>millas</b>
+                  <span> {{ cliente && cliente.millas ? cliente.millas: 'no registrado'}} </span>
+                </li>
+
+
+                <li class="list-group-item">
+                  <b>nic</b>
+                  <span> {{ cliente && cliente.nic ? cliente.nic: 'no registrado'}} </span>
+                </li>
+                <li class="list-group-item">
+                  <b>nit</b>
+                  <span> {{ cliente && cliente.nit ? cliente.nit: 'no registrado'}} </span>
+                </li>
+                <li class="list-group-item">
+                  <b>nombre_contacto</b>
+                  <span> {{ cliente && cliente.nombre_contacto ? cliente.nombre_contacto: 'no registrado'}} </span>
+                </li>
+                <li class="list-group-item">
+                  <b>nombre_empresa</b>
+                  <span> {{ cliente && cliente.nombre_empresa ? cliente.nombre_empresa: 'no registrado'}} </span>
+                </li>
+                <li class="list-group-item">
+                  <b>num_doc</b>
+                  <span> {{ cliente && cliente.num_doc ? cliente.num_doc: 'no registrado'}} </span>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="col-md-6">
+                
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <b>num_viajero</b>
+                  <span> {{ cliente && cliente.num_viajero ? cliente.num_viajero: 'no registrado'}} </span>
+                </li>
+                <li class="list-group-item">
+                  <b>primer_apellido</b>
+                  <span> {{ cliente && cliente.primer_apellido ? cliente.primer_apellido: 'no registrado'}} </span>
+                </li>
+                <li class="list-group-item">
+                  <b>primer_nombre</b>
+                  <span> {{ cliente && cliente.primer_nombre ? cliente.primer_nombre: 'no registrado'}} </span>
+                </li>
+                <li class="list-group-item">
+                  <b>segundo_apellido</b>
+                  <span> {{ cliente && cliente.segundo_apellido ? cliente.segundo_apellido: 'no registrado'}} </span>
+                </li>
+                <li class="list-group-item">
+                  <b>segundo_nombre</b>
+                  <span> {{ cliente && cliente.segundo_nombre ? cliente.segundo_nombre: 'no registrado'}} </span>
+                </li>
+                <li class="list-group-item">
+                  <b>tel_fijo</b>
+                  <span> {{ cliente && cliente.tel_fijo ? cliente.tel_fijo: 'no registrado'}} </span>
+                </li>
+                <li class="list-group-item">
+                  <b>tel_movil</b>
+                  <span> {{ cliente && cliente.tel_movil ? cliente.tel_movil: 'no registrado'}} </span>
+                </li>
+                <li class="list-group-item">
+                  <b>tipo_doc</b>
+                  <span> {{ cliente && cliente.tipo_doc ? cliente.tipo_doc: 'no registrado'}} </span>
+                </li>
+                <li class="list-group-item">
+                  <b>username</b>
+                  <span> {{ cliente && cliente.username ? cliente.username: 'no registrado'}} </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="4" [rowspan]="3">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Registro de vuelos
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div>Informacion de vuelos</div>
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">fecha</th>
+                  <th scope="col">vuelo</th>
+                  <th scope="col">destino</th>
+                  <th scope="col">millas</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
   </mat-grid-list>
 </div>
