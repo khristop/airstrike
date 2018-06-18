@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {NotificationService} from "../../utils/notification.service";
+import { AuthService } from '../../../core/rest/auth/auth.service';
 
 declare var $:any;
 
@@ -18,12 +19,14 @@ declare var $:any;
 export class LogoutComponent implements OnInit {
 
   constructor(private router: Router,
-              private notificationService: NotificationService) { }
+              private notificationService: NotificationService,
+              private _auth_service: AuthService
+            ) { }
 
   showPopup(){
     this.notificationService.smartMessageBox({
-      title : "<i class='fa fa-sign-out txt-color-orangeDark'></i> Logout <span class='txt-color-orangeDark'><strong>" + $('#show-shortcut').text() + "</strong></span> ?",
-      content : "You can improve your security further after logging out by closing this opened browser",
+      title : "<i class='fa fa-sign-out txt-color-orangeDark'></i> Cerrar sesion <span class='txt-color-orangeDark'><strong>" + $('#show-shortcut').text() + "</strong></span> ?",
+      content : "Cerrar sesion del navegador",
       buttons : '[No][Yes]'
 
     }, (ButtonPressed) => {
@@ -34,13 +37,8 @@ export class LogoutComponent implements OnInit {
   }
 
   logout(){
-      this.router.navigate(['/auth/login']).then(() => location.reload());
+    this._auth_service.logout();
   }
-
   ngOnInit() {
-
   }
-
-
-
 }

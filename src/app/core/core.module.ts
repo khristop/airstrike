@@ -1,14 +1,17 @@
 
 import {NgModule, Optional, SkipSelf} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {throwIfAlreadyLoaded} from './guards/module-import-guard';
 import {JsonApiService} from './rest/json-api.service';
 import {LayoutService} from '../shared/layout/layout.service';
-import {UserService} from '../shared/user/user.service';
 import {AlertModule, BsDropdownModule, ProgressbarModule, TabsModule, TooltipModule} from 'ngx-bootstrap';
 import {MAT_DATE_LOCALE} from '@angular/material';
 import {ClienteService} from './rest/cliente/cliente.service';
+import { AuthService } from './rest/auth/auth.service';
+import { UserService } from './rest/auth/user.service';
+import { ApiInterceptor } from './interceptor/api.interceptor';
+import { AuthGuard } from './guards/auth-guard.service';
 
 @NgModule({
   imports: [
@@ -26,8 +29,15 @@ import {ClienteService} from './rest/cliente/cliente.service';
   providers: [ // aqui van todos los servicios que deben ser usados como singleton
     JsonApiService,
     LayoutService,
+    ClienteService,
+    AuthService,
     UserService,
-    ClienteService
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiInterceptor,
+      multi: true,
+    }
   ]
 })
 export class CoreModule {
