@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 import { ClienteService } from '../../core/rest/cliente/cliente.service';
+import { RolService } from '../../core/rest/auth/rol.service';
 
 @Component({
   selector: 'app-cliente-form',
@@ -12,8 +13,8 @@ import { ClienteService } from '../../core/rest/cliente/cliente.service';
 export class ClienteFormComponent implements OnInit {
 
   clienteForm: FormGroup;
-
   ngOnInit() {
+
     this.iniciarForm();
   } 
 
@@ -47,6 +48,10 @@ export class ClienteFormComponent implements OnInit {
       detalle_empresa: this.fb.group({}),
       usuario: this.fb.group({}),
     });
+    this.clienteForm.addControl('primer_nombre', this.fb.control('', [Validators.required]));
+    this.clienteForm.addControl('segundo_nombre', this.fb.control('', [ Validators.required]));
+    this.clienteForm.addControl('primer_apellido', this.fb.control('', [ Validators.required]));
+    this.clienteForm.addControl('segundo_apellido', this.fb.control('', [ Validators.required]));
   }
 
   onCerrar(): void {

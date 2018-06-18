@@ -25,9 +25,7 @@
       <mat-form-field>
         <mat-select formControlName="id_rol">
           <mat-option>-- Seleccione --</mat-option>
-          <mat-option value="1">Usuario</mat-option>
-          <mat-option value="2">Rol 1</mat-option>
-          <mat-option value="3">Rol 2</mat-option>
+          <mat-option *ngFor="let rol of roles" value="{{rol.id}}">{{rol.nombre}}</mat-option>
         </mat-select>
         <mat-label>
           <mat-icon>wc</mat-icon>

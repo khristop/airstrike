@@ -6,12 +6,12 @@ import {map} from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class ClienteService {
+export class RolService {
 
   private resourceUrl: string;
 
   constructor(private http: HttpClient) {
-    this.resourceUrl = config.REST_URL + 'cliente';
+    this.resourceUrl = config.REST_URL + 'rol';
   }
 
   //importante!!!!

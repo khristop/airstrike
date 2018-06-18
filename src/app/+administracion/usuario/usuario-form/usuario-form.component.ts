@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { RolService } from '../../../core/rest/auth/rol.service';
 
 @Component({
   selector: 'app-usuario-form',
@@ -8,10 +9,16 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class UsuarioFormComponent implements OnInit {
   @Input('usuarioForm') usuarioForm: FormGroup;
+  public roles: any[];
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+    private _rol_Service: RolService,
+  ) { }
 
   ngOnInit() {
+    this._rol_Service.obtenerTodos().subscribe(roles=>{
+      this.roles = roles;
+    })
     this.iniciarForm();
   }
   iniciarForm() {

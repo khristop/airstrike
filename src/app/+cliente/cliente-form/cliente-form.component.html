@@ -4,6 +4,14 @@
     <div class="cliente-form">
       <form class="cliente-form" [formGroup]="clienteForm">
 
+
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="subheading-2">Informacion del usuario</h3>
+          </div>
+        </div>
+        <app-usuario-form [usuarioForm]="clienteForm.get('usuario')"></app-usuario-form>
+
         <div class="row">
           <div class="col-md 12">
             <label>
@@ -16,17 +24,49 @@
           </div>
         </div>
 
-        <ng-container *ngIf="clienteForm.get('tipo_cliente').value =='natural'; then naturalForm; else juridicoForm"></ng-container>
-        <ng-template #naturalForm>
-          <app-cliente-natural-form [detalleCliente]="clienteForm.get('detalle_natural')"></app-cliente-natural-form>
-        </ng-template>
-        <ng-template #juridicoForm>
-          <ng-container *ngIf="clienteForm.get('tipo_cliente').value =='juridico'">
-            <app-cliente-juridico-form [detalleCliente]="clienteForm.get('detalle_empresa')"></app-cliente-juridico-form>
-          </ng-container>
-        </ng-template>
-
         <ng-container *ngIf="clienteForm.get('tipo_cliente').value != ''">
+
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field>
+                <input matInput formControlName="primer_nombre" placeholder="ingrese el primer nombre">
+                <mat-label>
+                  <mat-icon>perm_identity</mat-icon>
+                  Primer nombre
+                </mat-label>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field>
+                <input matInput formControlName="segundo_nombre" placeholder="ingrese el segundo nombre">
+                <mat-label>
+                  <mat-icon>perm_identity</mat-icon>
+                  Segundo nombre
+                </mat-label>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field>
+                <input matInput formControlName="primer_apellido" placeholder="ingrese el primer apellido">
+                <mat-label>
+                  <mat-icon>perm_identity</mat-icon>
+                  Primer apellido
+                </mat-label>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field>
+                <input matInput formControlName="segundo_apellido" placeholder="ingrese el segundo apellido">
+                <mat-label>
+                  <mat-icon>perm_identity</mat-icon>
+                  Segundo apellido
+                </mat-label>
+              </mat-form-field>
+            </div>
+          </div>
 
           <div class="row">
             <div class="col-md-6">
@@ -59,13 +99,18 @@
               </mat-form-field>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-12">
-              <h3 class="subheading-2">Informacion del usuario</h3>
-            </div>
-          </div>
-          <app-usuario-form [usuarioForm]="clienteForm.get('usuario')"></app-usuario-form>
         </ng-container>
+
+        <ng-container *ngIf="clienteForm.get('tipo_cliente').value =='natural'; then naturalForm; else juridicoForm"></ng-container>
+        <ng-template #naturalForm>
+          <app-cliente-natural-form [detalleCliente]="clienteForm.get('detalle_natural')"></app-cliente-natural-form>
+        </ng-template>
+        <ng-template #juridicoForm>
+          <ng-container *ngIf="clienteForm.get('tipo_cliente').value =='juridico'">
+            <app-cliente-juridico-form [detalleCliente]="clienteForm.get('detalle_empresa')"></app-cliente-juridico-form>
+          </ng-container>
+        </ng-template>
+
       </form>
     </div>
   </div>
