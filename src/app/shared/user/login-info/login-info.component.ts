@@ -11,7 +11,6 @@ import { UserService } from '../../../core/rest/auth/user.service';
 export class LoginInfoComponent implements OnInit {
 
   public user: any;
-  private usuario: string;
 
   constructor(
     private userService: UserService,
@@ -20,9 +19,7 @@ export class LoginInfoComponent implements OnInit {
 
   ngOnInit() {
     if(this.userService.existeUsuario()){
-      this.usuario = this.userService.getUsuario().valueOf();
-    }else{
-      
+      this.user = this.userService.usuario;
     }
   }
 

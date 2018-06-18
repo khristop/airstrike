@@ -2,24 +2,22 @@ import { Injectable } from '@angular/core';
 import { config } from '../../../shared/airstrike.config';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable()
 export class UserService {
 
-    public usuario: any;
-    private token: any;
+    public usuario;
 
     private _api_url: string;
 
     constructor(private http: HttpClient) {
         this._api_url = config.REST_URL + 'usuario';
-
-        const usuario_save = JSON.parse(localStorage.getItem("user"));
-        // if (usuario_save != null) {
-        //     this.usuario = new any(usuario_save);
-        // }
-        console.log(this.usuario);
+        const usuario_save = JSON.parse(localStorage.getItem("usuario"));
+        if(usuario_save){
+            this.usuario = usuario_save;
+        }
     }
 
     obtener(id: number, filtro?: String) {
@@ -36,28 +34,15 @@ export class UserService {
     }
 
     getUsuario(): String {
-        return this.usuario.getUsuario();
+        return this.usuario.username;
     }
 
     getIdUsuario(): Number {
-        return this.usuario.getId();
+        return this.usuario.id_usuario;
     }
-
-    getIdEmpleado(): Number {
-
-        return this.usuario.getIdEmpleado();
-
-    }
-
-    // setUsuario(token: any) {
-    //     this.usuario = usuarioAut;
-    //     this.token
-    //     localStorage.setItem("user", JSON.stringify(this.usuario));
-    // }
 
     removerUsuario() {
         this.usuario = null;
-        localStorage.removeItem("user");
         return !this.usuario;
     }
 
@@ -65,16 +50,8 @@ export class UserService {
         return this.usuario ? true : false;
     }
 
-    verificarPermisoMenu(llave: string) {
-        //console.log(this.usuario);
-    }
-
     obtenerPermisos() {
         return this.usuario.perfil.permisos;
-    }
-
-    obtenerFotografia() {
-        return this.usuario.getFotografia();
     }
 
     obtenerPerfil() {
