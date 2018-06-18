@@ -25,7 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     administracionRouting,
     MaterialModule,
   ],
-  exports:[RolFormComponent,],
+  exports:[RolFormComponent, UsuarioFormComponent],
   entryComponents: [RolFormComponent],
   declarations: [ UsuarioComponent, RolComponent, ConfiguracionComponent, AdministracionComponent, 
     RolesListComponent, PermisosFormComponent, RolFormComponent, UsuarioListComponent, 

@@ -29,7 +29,7 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
           <div class="well no-padding">
-            <form class="smart-form client-form">
+            <form class="smart-form client-form" [formGroup]="loginForm">
               <header>
                 Ingreso
               </header>
@@ -37,29 +37,36 @@
                 <section>
                   <label class="label">Usuario</label>
                   <label class="input"> <i class="icon-append fa fa-user"></i>
-                    <input type="text" name="usuario" data-smart-validate-input="" data-required="" data-message-required="Ingrese su usuario" >
+                    <input formControlName="usuario" type="text" name="usuario" data-smart-validate-input="" data-required="" data-message-required="Ingrese su usuario" >
                     <b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i>
                       Ingrese su usuario</b></label>
                 </section>
                 <section>
                   <label class="label">Contraseña</label>
                   <label class="input"> <i class="icon-append fa fa-lock"></i>
-                    <input type="password" name="password" data-smart-validate-input="" data-required="" data-minlength="3" data-maxnlength="20" data-message="Ingrese su contraseña">
+                    <input  formControlName="password" type="password" name="password" data-smart-validate-input="" data-required="" data-minlength="3" data-maxnlength="20" data-message="Ingrese su contraseña">
                     <b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Ingrese su contraseña</b> </label>
+                    
   
                   <div class="note">
                     <a routerLink="/acceso/forgot-password">¿Olvido la contraseña?</a>
                   </div>
 
                 </section>
-                <section>
-                  <label class="checkbox">
-                    <input type="checkbox" name="remember" checked>
-                    <i></i>Mantener sesión</label>
+                <section *ngIf="error > 0 && error < 3" >
+                  <alert class="bg-color-yellow">El usuario no posee permisos 
+                    <i class="fa fa-exclamation"></i>
+                </alert>
+                </section>
+                <section *ngIf="error == 3" >
+                  <alert class="bg-color-red">Usuario bloqueado
+                    <i class="fa fa-exclamation"></i>
+                </alert>
                 </section>
               </fieldset>
+             
               <footer>
-                <button (click)="login($event)" class="btn btn-primary">
+                <button (click)="login($event)" class="btn btn-primary" [disabled]="error == 3">
                   Ingresar
                 </button>
               </footer>

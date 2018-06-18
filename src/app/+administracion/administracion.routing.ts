@@ -8,12 +8,6 @@ import { RolDetailsComponent } from './rol/rol-details/rol-details.component';
 
 export const administracionRoutes: Routes = [
     {
-        path: '',
-        component: AdministracionComponent,
-        data: {
-            pageTitle: 'Administracion'
-        }
-    }, {
         path: 'rol',
         component: RolComponent,
         data: {

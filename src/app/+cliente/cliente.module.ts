@@ -13,6 +13,7 @@ import { ClienteNaturalFormComponent } from './cliente-form/cliente-natural-form
 import { ClienteJuridicoFormComponent } from './cliente-form/cliente-juridico-form/cliente-juridico-form.component';
 import { ClienteFormExtComponent } from './cliente-form/cliente-form-ext.component';
 import { ClienteDetailsComponent } from './cliente-details/cliente-details.component';
+import { AdministracionModule } from '../+administracion/administracion.module';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { ClienteDetailsComponent } from './cliente-details/cliente-details.compo
     FormsModule,
     MaterialModule,
     ReactiveFormsModule,
+    AdministracionModule
   ],
   exports:[ClienteFormComponent, ClienteFormExtComponent],
   declarations: [ ClienteComponent, GestionClienteComponent, ClienteListComponent, ClienteFormComponent,

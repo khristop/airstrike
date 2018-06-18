@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-usuario',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./usuario.component.css']
 })
 export class UsuarioComponent implements OnInit {
-
-  constructor() { }
-
+  
+  constructor(private fb: FormBuilder) { }
   ngOnInit() {
+    this.iniciarForm();
   }
+  iniciarForm() {
 
+  }
 }

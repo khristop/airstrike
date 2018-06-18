@@ -21,15 +21,17 @@ export class ClienteListComponent implements OnInit {
     private _cliente_service: ClienteService
   ) {
 
-    this._cliente_service.obtenerTodos().subscribe(clientes => {
-      this.dataSource = new MatTableDataSource(clientes);
-    })
-
   }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
+    this._cliente_service.obtenerTodos().subscribe(clientes => {
+      this.dataSource = new MatTableDataSource(clientes);
+      this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+      
+    })
+
+    
   }
 
   applyFilter(filterValue: string) {

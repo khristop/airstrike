@@ -15,10 +15,6 @@ export class ClienteNaturalFormComponent implements OnInit {
     this.iniciarForm();
   }
   iniciarForm() {
-    this.naturalForm.addControl('primer_nombre', this.fb.control('', [Validators.required]));
-    this.naturalForm.addControl('segundo_nombre', this.fb.control('', [ Validators.required]));
-    this.naturalForm.addControl('primer_apellido', this.fb.control('', [ Validators.required]));
-    this.naturalForm.addControl('segundo_apellido', this.fb.control('', [ Validators.required]));
     this.naturalForm.addControl('estado_civil', this.fb.control('', [ Validators.required]));
     this.naturalForm.addControl('genero', this.fb.control('', [ Validators.required]));
     this.naturalForm.addControl('fecha_nacimiento', this.fb.control({value:'', disabled: false}, [ Validators.required]));
