@@ -10,6 +10,21 @@ export const viajarRoutes: Routes = [
             pageTitle: 'Viajar'
         }
     },
+    {
+        path: 'mis_viajes',
+        component: ViajarComponent,
+        data: {
+            pageTitle: 'Mis viajes'
+        }
+    },
+    {
+        path: 'historico_viajes',
+        component: ViajarComponent,
+        data: {
+            pageTitle: 'Historial de viajes'
+        }
+    },
+    
 ];
 
 export const viajarRounting: ModuleWithProviders = RouterModule.forChild(viajarRoutes);

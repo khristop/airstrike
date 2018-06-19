@@ -5,6 +5,7 @@ import { RolComponent } from './rol/rol.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { RolFormComponent } from './rol/rol-form/rol-form.component';
 import { RolDetailsComponent } from './rol/rol-details/rol-details.component';
+import { ConfiguracionComponent } from './configuracion/configuracion.component';
 
 export const administracionRoutes: Routes = [
     {
@@ -24,6 +25,12 @@ export const administracionRoutes: Routes = [
         component: RolDetailsComponent,
         data: {
             pageTitle: 'Detalle del rol'
+        }
+    },{
+        path: 'config',
+        component: ConfiguracionComponent,
+        data: {
+            pageTitle: 'Configuraciones'
         }
     }
 ];

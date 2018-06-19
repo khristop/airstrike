@@ -48,11 +48,9 @@
               </div>
               <div class="col-md-6">
                 <mat-form-field>
-                  <mat-select formControlName="codigo_ciudad">
+                  <mat-select formControlName="ciudad_codigo">
                     <mat-option>-- Seleccione --</mat-option>
-                    <mat-option value="1">Ciudad 1</mat-option>
-                    <mat-option value="2">Ciudad 2</mat-option>
-                    <mat-option value="2">Ciudad 3</mat-option>
+                    <mat-option *ngFor="let ciudad of ciudades" value="{{ciudad.codigo}}">{{ciudad.pais_codigo}} - {{ciudad.nombre}}</mat-option>
                   </mat-select>
                   <mat-label>
                     <mat-icon>location_city</mat-icon>
@@ -64,7 +62,6 @@
           
       </form>
     </div>
-    <pre>{{ aeropuertoForm.value | json }}</pre>
   </div>
 </div>
 
