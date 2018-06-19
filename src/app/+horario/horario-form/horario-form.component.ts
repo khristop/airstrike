@@ -82,5 +82,10 @@ export class HorarioFormComponent implements OnInit {
     })
   }
 
+  
+  onCerrar(): void {
+    this.dialogRef.close();
+  }
+
 
 }

@@ -68,5 +68,8 @@ export class AeropuertoFormComponent implements OnInit {
     )
   }
 
+  onCerrar(): void {
+    this.dialogRef.close();
+  }
 
 }

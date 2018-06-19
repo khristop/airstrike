@@ -71,5 +71,10 @@ export class GatewayFormComponent implements OnInit {
     })
   }
 
+  
+  onCerrar(): void {
+    this.dialogRef.close();
+  }
+
 
 }
