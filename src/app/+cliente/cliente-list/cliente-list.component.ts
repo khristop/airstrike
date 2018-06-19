@@ -1,5 +1,5 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource, MatDialog} from '@angular/material';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, MatSort, MatTableDataSource, MatDialog } from '@angular/material';
 import { ClienteFormComponent } from '../cliente-form/cliente-form.component';
 import { ClienteService } from '../../core/rest/cliente/cliente.service';
 
@@ -9,7 +9,7 @@ import { ClienteService } from '../../core/rest/cliente/cliente.service';
   styleUrls: ['./cliente-list.component.css']
 })
 export class ClienteListComponent implements OnInit {
-  columnas = ['id_usuario','username', 'primer_nombre', 'nombre_empresa' , 'num_viajero', 'millas','action'];
+  columnas = ['id_usuario', 'username', 'primer_nombre', 'nombre_empresa', 'num_viajero', 'millas', 'action'];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -27,11 +27,8 @@ export class ClienteListComponent implements OnInit {
     this._cliente_service.obtenerTodos().subscribe(clientes => {
       this.dataSource = new MatTableDataSource(clientes);
       this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-      
-    })
-
-    
+      this.dataSource.sort = this.sort;
+    });
   }
 
   applyFilter(filterValue: string) {
@@ -43,9 +40,9 @@ export class ClienteListComponent implements OnInit {
     }
   }
 
-  openUpdateDialog(idCliente: number){
+  openUpdateDialog(idCliente: number) {
     //ejecutar peticion hacia el servicio primero
-    this.dialogUpdateCliRef = this._dialog.open( ClienteFormComponent , {
+    this.dialogUpdateCliRef = this._dialog.open(ClienteFormComponent, {
       width: '850px',
     });
 

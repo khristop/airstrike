@@ -1,51 +1,68 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject} from 'rxjs/Rx';
+import { BehaviorSubject } from 'rxjs/Rx';
 //import {Horario} from '../../models/horario/horario.model';
-import {HttpClient} from '@angular/common/http';
-import {config} from '../../../shared/airstrike.config';
-import {map} from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { config } from '../../../shared/airstrike.config';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HorarioService {
-  private horariosSource: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
-  private horarioSource: BehaviorSubject<any> = new BehaviorSubject(null);
-  // listado de aviones
-
   private resourceUrl: string;
-  public horarios = this.horariosSource.asObservable();
-  public horario = this.horarioSource.asObservable();
 
   constructor(private http: HttpClient) {
-    this.resourceUrl = config.API_URL + 'horario/';
+    this.resourceUrl = config.REST_URL + 'horario';
   }
 
-  fetchHorario(filtro?: String) {
-    this.obtenerTodos(filtro || null).subscribe(
-      horario => this.horariosSource.next([]),
-      err => console.log(err) );
-  }
   //importante!!!!
-obtener(id: number, filtro?: String ) {
-  const url = filtro ? this.resourceUrl + id + filtro +"?_token="+localStorage.getItem('token'): this.resourceUrl + id+"?_token="+localStorage.getItem('token') ;
-  return this.http.get( url ).pipe(
-    map(hora => {
-      return hora;
-    })
-  );
-}
+  obtener(id: number, filtro?: String) {
+    const url = filtro ? this.resourceUrl +'/' + id + filtro : this.resourceUrl +'/'+ id ;
+    return this.http.get<any>( url+"?_token="+localStorage.getItem('token') ).pipe(
+      map(res => {
+        if(res.status == 'OK'){
+          return res['data'];
+        }else{
+          return [];
+        }
+      })
+    );
+  }
 
   obtenerTodos(filtro?: String) {
-    return this.http.get(filtro ? this.resourceUrl + filtro+"?_token="+localStorage.getItem('token') : this.resourceUrl+"?_token="+localStorage.getItem('token') );
+    return this.http.get<any>(filtro ? this.resourceUrl + filtro : this.resourceUrl+"?_token="+localStorage.getItem('token')).pipe(
+      map(res=> {
+        if(res.status == 'OK'){
+          return res['data'];
+        }else{
+          return [];
+        }
+      })
+    );
   }
   actualizar(data: Object) {
     const dataSerial = JSON.stringify(data);
-    return this.http.put(this.resourceUrl +"?_token="+localStorage.getItem('token'), dataSerial);
+    return this.http.put<any>(this.resourceUrl+"?_token="+localStorage.getItem('token'), dataSerial).pipe(
+      map(res=> {
+        if(res.status == 'OK'){
+          return res['data'];
+        }else{
+          return [];
+        }
+      })
+    );
   }
   guardar(data: Object) {
     const dataSerial = JSON.stringify(data);
-    return this.http.post(this.resourceUrl +"?_token="+localStorage.getItem('token'), dataSerial);
+    return this.http.post<any>(this.resourceUrl +"?_token="+localStorage.getItem('token'), dataSerial).pipe(
+      map(res=> {
+        if(res.status == 'OK'){
+          return true;
+        }else{
+          return false;
+        }
+      })
+    );
   }
 
 }

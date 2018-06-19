@@ -50,7 +50,7 @@ export class ClienteService {
           return [];
         }
       })
-    );;
+    );
   }
   guardar(data: Object) {
     const dataSerial = JSON.stringify(data);
@@ -62,7 +62,7 @@ export class ClienteService {
           return false;
         }
       })
-    );;
+    );
   }
 
 }

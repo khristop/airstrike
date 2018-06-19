@@ -9,43 +9,61 @@ import {map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AeropuertoService {
-  private aeropuertosSource: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
-  private aeropuertoSource: BehaviorSubject<any> = new BehaviorSubject(null);
-  // listado de aeropuertos
 
   private resourceUrl: string;
-  public aeropuertos = this.aeropuertosSource.asObservable();
-  public aeropuerto = this.aeropuertoSource.asObservable();
 
   constructor(private http: HttpClient) {
-    this.resourceUrl = config.API_URL + 'aeropuerto/';
-  }
-
-  fetchAeropuerto(filtro?: String) {
-    this.obtenerTodos(filtro || null).subscribe(
-      aeropuerto => this.aeropuertosSource.next([]),
-      err => console.log(err) );
+    this.resourceUrl = config.REST_URL  + 'aeropuerto';
   }
 
   //importante!!!!
-  obtener(id: number, filtro?: String ) {
-    const url = filtro ? this.resourceUrl + id + filtro : this.resourceUrl + id ;
-    return this.http.get( url ).pipe(
-      map(aero => {
-        return aero;
+  obtener(id: number, filtro?: String) {
+    const url = filtro ? this.resourceUrl +'/' + id + filtro : this.resourceUrl +'/'+ id ;
+    return this.http.get<any>( url+"?_token="+localStorage.getItem('token') ).pipe(
+      map(res => {
+        if(res.status == 'OK'){
+          return res['data'];
+        }else{
+          return [];
+        }
       })
     );
   }
+
   obtenerTodos(filtro?: String) {
-    return this.http.get(filtro ? this.resourceUrl + filtro : this.resourceUrl );
+    return this.http.get<any>(filtro ? this.resourceUrl + filtro : this.resourceUrl+"?_token="+localStorage.getItem('token')).pipe(
+      map(res=> {
+        if(res.status == 'OK'){
+          return res['data'];
+        }else{
+          return [];
+        }
+      })
+    );
   }
   actualizar(data: Object) {
     const dataSerial = JSON.stringify(data);
-    return this.http.put(this.resourceUrl, dataSerial);
+    return this.http.put<any>(this.resourceUrl+"?_token="+localStorage.getItem('token'), dataSerial).pipe(
+      map(res=> {
+        if(res.status == 'OK'){
+          return res['data'];
+        }else{
+          return [];
+        }
+      })
+    );
   }
   guardar(data: Object) {
     const dataSerial = JSON.stringify(data);
-    return this.http.post(this.resourceUrl, dataSerial);
+    return this.http.post<any>(this.resourceUrl +"?_token="+localStorage.getItem('token'), dataSerial).pipe(
+      map(res=> {
+        if(res.status == 'OK'){
+          return true;
+        }else{
+          return false;
+        }
+      })
+    );
   }
 
 }
