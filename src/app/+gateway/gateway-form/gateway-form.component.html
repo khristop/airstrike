@@ -3,43 +3,39 @@
   <div class="container-fluid">
     <div class="gateway-form">
       <form class="gateway-form" [formGroup]="gatewayForm">
-          <div class="row">
-              
-              <div class="col-md-12">
-                  <mat-form-field>
-                    <mat-select formControlName="id_horario">
-                      <mat-option>-- Seleccione --</mat-option>
-                      <mat-option value="1">horario 1</mat-option>
-                      <mat-option value="2">horario 2</mat-option>
-                      <mat-option value="2">horario 3</mat-option>
-                    </mat-select>
-                    <mat-label>
-                      <mat-icon>timer</mat-icon>
-                      Horario de vuelo
-                    </mat-label>
-                  </mat-form-field>
-                </div>
-            </div>
-           
-            
-            <div class="row">
-                <div class="col-md-12">
-                    <mat-form-field>
-                      <mat-select formControlName="aeropuerto_codigo">
-                        <mat-option>-- Seleccione --</mat-option>
-                        <mat-option value="1">aeropuerto 1</mat-option>
-                        <mat-option value="2">aeropuerto 2</mat-option>
-                        <mat-option value="2">aeropuerto 3</mat-option>
-                      </mat-select>
-                      <mat-label>
-                        <mat-icon>location_city</mat-icon>
-                        Aeropuerto
-                      </mat-label>
-                    </mat-form-field>
-                  </div>
-              
-            </div>
-          
+        <div class="row">
+
+          <div class="col-md-12">
+            <mat-form-field>
+              <mat-select formControlName="id_horario">
+                <mat-option>-- Seleccione --</mat-option>
+                <mat-option *ngFor="let horario of horarios" value="{{horario.id}}">hora: {{horario.hora}} - t abordaje: {{horario.tiempo_abordaje}} - t desabordaje: {{horario.tiempo_desabordaje}}</mat-option>
+              </mat-select>
+              <mat-label>
+                <mat-icon>timer</mat-icon>
+                Horario de vuelo
+              </mat-label>
+            </mat-form-field>
+          </div>
+        </div>
+        
+
+        <div class="row">
+          <div class="col-md-12">
+            <mat-form-field>
+              <mat-select formControlName="aeropuerto_codigo">
+                <mat-option>-- Seleccione --</mat-option>
+                <mat-option *ngFor="let aero of aeropuertos" value="{{aero.codigo}}">{{aero.codigo}} - {{aero.nombre}} baias: {{aero.bahias}}</mat-option>
+              </mat-select>
+              <mat-label>
+                <mat-icon>location_city</mat-icon>
+                Aeropuerto
+              </mat-label>
+            </mat-form-field>
+          </div>
+
+        </div>
+
       </form>
     </div>
     <pre>{{ gatewayForm.value | json }}</pre>

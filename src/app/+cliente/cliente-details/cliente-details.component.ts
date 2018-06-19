@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { ClienteService } from '../../core/rest/cliente/cliente.service';
 
 @Component({
   selector: 'cliente-details',
@@ -8,24 +9,21 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./cliente-details.component.css']
 })
 export class ClienteDetailsComponent implements OnInit {
-  cards = [
-    { title: 'Card 1', cols: 2, rows: 1 },
-    { title: 'Card 2', cols: 1, rows: 1 },
-    { title: 'Card 3', cols: 1, rows: 2 },
-    { title: 'Card 4', cols: 1, rows: 1 }
-  ];  
-  private selectedId: number;
 
-  constructor(private route: ActivatedRoute){}
+  private selectedId: any;
+
+  public cliente: any;
+
+  constructor(private route: ActivatedRoute, private _cliente_service: ClienteService){}
 
   ngOnInit(){
-    // this.route.paramMap.pipe(
-    //   switchMap((params: ParamMap) => {
-    //     // (+) before `params.get()` turns the string into a number
-    //     this.selectedId = +params.get('id');
-    //     return this.service.getHeroes();
-    //   }
-    // ));
+    this.selectedId = this.route.snapshot.paramMap.get('id');
+
+    this._cliente_service.obtener(this.selectedId).subscribe(cliente=>{
+      this.cliente = cliente[0];
+      console.log(this.cliente);
+    });
+
   }
 }
 

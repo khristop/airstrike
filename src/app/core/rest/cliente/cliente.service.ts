@@ -16,7 +16,7 @@ export class ClienteService {
 
   //importante!!!!
   obtener(id: number, filtro?: String ) {
-    const url = filtro ? this.resourceUrl + id + filtro : this.resourceUrl + id ;
+    const url = filtro ? this.resourceUrl +'/' + id + filtro : this.resourceUrl +'/'+ id ;
     return this.http.get<any>( url+"?_token="+localStorage.getItem('token') ).pipe(
       map(res => {
         if(res.status == 'OK'){
@@ -42,7 +42,7 @@ export class ClienteService {
   
   actualizar(data: Object) {
     const dataSerial = JSON.stringify(data);
-    return this.http.put<any>(this.resourceUrl, dataSerial).pipe(
+    return this.http.put<any>(this.resourceUrl+"?_token="+localStorage.getItem('token'), dataSerial).pipe(
       map(res=> {
         if(res.status == 'OK'){
           return res['data'];
@@ -50,19 +50,19 @@ export class ClienteService {
           return [];
         }
       })
-    );;
+    );
   }
   guardar(data: Object) {
     const dataSerial = JSON.stringify(data);
     return this.http.post<any>(this.resourceUrl +"?_token="+localStorage.getItem('token'), dataSerial).pipe(
       map(res=> {
         if(res.status == 'OK'){
-          return res['data'];
+          return true;
         }else{
-          return [];
+          return false;
         }
       })
-    );;
+    );
   }
 
 }

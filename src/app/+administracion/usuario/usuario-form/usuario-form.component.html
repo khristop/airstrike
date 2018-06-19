@@ -20,7 +20,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" *ngIf="!locate">
     <div class="col-md-6">
       <mat-form-field>
         <mat-select formControlName="id_rol">
@@ -38,9 +38,7 @@
       <mat-form-field>
         <mat-select formControlName="id_estado">
           <mat-option>-- Seleccione --</mat-option>
-          <mat-option value="1">activo</mat-option>
-          <mat-option value="2">incativo</mat-option>
-          <mat-option value="3">bloqueado</mat-option>
+          <mat-option *ngFor="let est of estados" value="{{est.id}}">{{est.nombre}}</mat-option>
         </mat-select>
         <mat-label>
           <mat-icon>wc</mat-icon>

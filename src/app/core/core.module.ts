@@ -14,6 +14,9 @@ import { ApiInterceptor } from './interceptor/api.interceptor';
 import { AuthGuard } from './guards/auth-guard.service';
 import { AirstrikeService } from './rest/airstrike.service';
 import { RolService } from './rest/auth/rol.service';
+import { EstadoUserService } from './rest/auth/estado-user.service';
+import { HorarioService } from './rest/horario/horario.service';
+import { AeropuertoService } from './rest/aeropuerto/aeropuerto.service';
 
 @NgModule({
   imports: [
@@ -37,6 +40,9 @@ import { RolService } from './rest/auth/rol.service';
     AuthGuard,
     AirstrikeService,
     RolService,
+    EstadoUserService,
+    HorarioService,
+    AeropuertoService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ApiInterceptor,

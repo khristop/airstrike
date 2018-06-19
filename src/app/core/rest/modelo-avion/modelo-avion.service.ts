@@ -28,7 +28,7 @@ export class ModeloAvionService {
   }
     //importante!!!!
     obtener(id: number, filtro?: String ) {
-      const url = filtro ? this.resourceUrl + id + filtro : this.resourceUrl + id ;
+      const url = filtro ? this.resourceUrl + id + filtro+"?_token="+localStorage.getItem('token') : this.resourceUrl + id+"?_token="+localStorage.getItem('token') ;
       return this.http.get( url ).pipe(
         map(modavi => {
           return modavi;
@@ -37,15 +37,15 @@ export class ModeloAvionService {
     }
 
   obtenerTodos(filtro?: String) {
-    return this.http.get(filtro ? this.resourceUrl + filtro : this.resourceUrl );
+    return this.http.get(filtro ? this.resourceUrl + filtro+"?_token="+localStorage.getItem('token') : this.resourceUrl+"?_token="+localStorage.getItem('token') );
   }
   actualizar(data: Object) {
     const dataSerial = JSON.stringify(data);
-    return this.http.put(this.resourceUrl, dataSerial);
+    return this.http.put(this.resourceUrl+"?_token="+localStorage.getItem('token'), dataSerial);
   }
   guardar(data: Object) {
     const dataSerial = JSON.stringify(data);
-    return this.http.post(this.resourceUrl, dataSerial);
+    return this.http.post(this.resourceUrl+"?_token="+localStorage.getItem('token'), dataSerial);
   }
 
 }

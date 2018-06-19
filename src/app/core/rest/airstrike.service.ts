@@ -33,7 +33,7 @@ export class AirstrikeService {
   }
 
   private obtenerSecciones<T>(){
-    return this.http.get<T>(this.api_url+'menu')
+    return this.http.get<T>(this.api_url+'menu'+"?_token="+localStorage.getItem('token'))
     .map(res =>{
       return res['response'] ;
     }).subscribe(data=>{

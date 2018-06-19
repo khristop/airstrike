@@ -42,7 +42,7 @@ export class RolService {
   
   actualizar(data: Object) {
     const dataSerial = JSON.stringify(data);
-    return this.http.put<any>(this.resourceUrl, dataSerial).pipe(
+    return this.http.put<any>(this.resourceUrl+"?_token="+localStorage.getItem('token'), dataSerial).pipe(
       map(res=> {
         if(res.status == 'OK'){
           return res['data'];

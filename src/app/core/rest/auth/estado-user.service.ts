@@ -1,23 +1,22 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/Rx';
-//import {Horario} from '../../models/horario/horario.model';
-import { HttpClient } from '@angular/common/http';
-import { config } from '../../../shared/airstrike.config';
-import { map } from 'rxjs/operators';
+import {HttpClient} from '@angular/common/http';
+import {config} from '../../../shared/airstrike.config';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HorarioService {
+export class EstadoUserService {
+
   private resourceUrl: string;
 
   constructor(private http: HttpClient) {
-    this.resourceUrl = config.REST_URL + 'horario';
+    this.resourceUrl = config.REST_URL + 'estado';
   }
 
   //importante!!!!
-  obtener(id: number, filtro?: String) {
-    const url = filtro ? this.resourceUrl +'/' + id + filtro : this.resourceUrl +'/'+ id ;
+  obtener(id: number, filtro?: String ) {
+    const url = filtro ? this.resourceUrl + id + filtro : this.resourceUrl + id ;
     return this.http.get<any>( url+"?_token="+localStorage.getItem('token') ).pipe(
       map(res => {
         if(res.status == 'OK'){
@@ -40,9 +39,10 @@ export class HorarioService {
       })
     );
   }
+  
   actualizar(data: Object) {
     const dataSerial = JSON.stringify(data);
-    return this.http.put<any>(this.resourceUrl+"?_token="+localStorage.getItem('token'), dataSerial).pipe(
+    return this.http.put<any>(this.resourceUrl, dataSerial).pipe(
       map(res=> {
         if(res.status == 'OK'){
           return res['data'];
@@ -50,19 +50,19 @@ export class HorarioService {
           return [];
         }
       })
-    );
+    );;
   }
   guardar(data: Object) {
     const dataSerial = JSON.stringify(data);
     return this.http.post<any>(this.resourceUrl +"?_token="+localStorage.getItem('token'), dataSerial).pipe(
       map(res=> {
         if(res.status == 'OK'){
-          return true;
+          return res['data'];
         }else{
-          return false;
+          return [];
         }
       })
-    );
+    );;
   }
 
 }
