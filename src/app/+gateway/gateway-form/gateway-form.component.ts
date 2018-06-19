@@ -4,6 +4,7 @@ import { MatDialogRef } from '@angular/material';
 import { GatewayService } from '../../core/rest/gateway/gateway.service';
 import { HorarioService } from '../../core/rest/horario/horario.service';
 import { AeropuertoService } from '../../core/rest/aeropuerto/aeropuerto.service';
+import { NotificationService } from '../../shared/utils/notification.service';
 
 @Component({
   selector: 'app-gateway-form',
@@ -24,7 +25,8 @@ export class GatewayFormComponent implements OnInit {
     public dialogRef: MatDialogRef<GatewayFormComponent>,
     private _gateway_service: GatewayService,
     private _horarios_service: HorarioService,
-    private _aeropuerto_service: AeropuertoService
+    private _aeropuerto_service: AeropuertoService,
+    private notificationService: NotificationService
   ) {
   }
 
@@ -53,10 +55,18 @@ export class GatewayFormComponent implements OnInit {
   }
 
   registrarGateway() {
-    console.log("registrar");
     this._gateway_service.guardar(this.gatewayForm.value).subscribe((res) => {
       if (res) {
         console.log("registrado con exito");
+        this.dialogRef.close();
+        this.notificationService.bigBox({
+          title: "Registrado con exito",
+          content: "Se registro el gateway con exito",
+          color: "#C79121",
+          timeout: 8000,
+          icon: "fa fa-check",
+        
+        });
       }
     })
   }

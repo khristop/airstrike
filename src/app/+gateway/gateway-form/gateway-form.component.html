@@ -33,16 +33,13 @@
               </mat-label>
             </mat-form-field>
           </div>
-
         </div>
-
       </form>
     </div>
-    <pre>{{ gatewayForm.value | json }}</pre>
   </div>
 </div>
 
 <div mat-dialog-actions>
   <button mat-button (click)="onCerrar()">Cerrar</button>
-  <button mat-button color="success" cdkFocusInitial [disabled]="!gatewayForm.valid" (click)="registrarGatewayS()">Registrar</button>
+  <button mat-button color="success" cdkFocusInitial [disabled]="!gatewayForm.valid" (click)="registrarGateway()">Registrar</button>
 </div>
