@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, TemplateRef, ViewChild} from '@angular/co
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {MatDialog} from '@angular/material';
 import { GatewayFormComponent } from '../gateway-form/gateway-form.component';
+import { GatewayService } from '../../core/rest/gateway/gateway.service';
 
 @Component({
   selector: 'airstrike-gateway-list',
@@ -9,8 +10,8 @@ import { GatewayFormComponent } from '../gateway-form/gateway-form.component';
   styleUrls: ['./gateway-list.component.css']
 })
 export class GatewayListComponent implements OnInit {
-  columnas = ['id', 'Horario', 'Id de Aeropuerto','action'];
-  dataSource: MatTableDataSource<UserData>;
+  columnas = ['id', 'id_horario', 'aeropuerto_codigo','action'];
+  dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -19,15 +20,11 @@ export class GatewayListComponent implements OnInit {
   @ViewChild('dialogCreate') dialogCreate: TemplateRef<any>;
   dialogRef;
 
-  constructor(private _dialog: MatDialog){
-    // Create 100 users
-    const users: UserData[] = [];
-    for (let i = 1; i <= 100; i++) {
-      users.push(createNewUser(i));
-    }
+  dialogUpdateCliRef;
+  constructor(private _dialog: MatDialog,
+    private _gat_servide: GatewayService
+  ){
 
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
   }
   
 //mas cosas del form
@@ -46,8 +43,11 @@ export class GatewayListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this._gat_servide.obtenerTodos().subscribe(gateways => {
+      this.dataSource = new MatTableDataSource(gateways);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
   }
 
   applyFilter(filterValue: string) {
@@ -58,33 +58,16 @@ export class GatewayListComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-}
 
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
+  openUpdateDialog(idCliente: number) {
+    //ejecutar peticion hacia el servicio primero
+    this.dialogUpdateCliRef = this._dialog.open(GatewayFormComponent, {
+      width: '850px',
+    });
 
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-  };
+    this.dialogUpdateCliRef.afterClosed().subscribe(result => {
+      console.log('Dialogo cerrado');
+    });
+  }
 
-
-}
-
-const COLORS = ['maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple',
-  'fuchsia', 'lime', 'teal', 'aqua', 'blue', 'navy', 'black', 'gray'];
-const NAMES = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
-  'Charlotte', 'Theodore', 'Isla', 'Oliver', 'Isabella', 'Jasper',
-  'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'];
-
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
 }
