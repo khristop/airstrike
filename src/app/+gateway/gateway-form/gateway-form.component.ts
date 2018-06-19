@@ -18,6 +18,8 @@ export class GatewayFormComponent implements OnInit {
   horarios;
   aeropuertos;
 
+  filtro=  new FormControl('',[]);
+
   constructor(private fb: FormBuilder,
     public dialogRef: MatDialogRef<GatewayFormComponent>,
     private _gateway_service: GatewayService,
