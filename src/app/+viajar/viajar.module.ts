@@ -6,6 +6,9 @@ import {AirStrikeModule} from '../shared/airstrike.module';
 import { viajarFormComponent } from './viajar-form/viajar-form.component';
 import { AlertModule } from 'ngx-bootstrap';
 import { SmartadminWizardsModule } from '../shared/forms/wizards/smartadmin-wizards.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '../shared/layout/material/material.module';
+import { VuelosConsultaComponent } from './vuelos-consulta/vuelos-consulta.component';
 
 @NgModule({
   imports: [
@@ -13,9 +16,12 @@ import { SmartadminWizardsModule } from '../shared/forms/wizards/smartadmin-wiza
     viajarRounting,
     AirStrikeModule,
     AlertModule,
-    SmartadminWizardsModule
+    SmartadminWizardsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule
   ],
-  declarations: [ViajarComponent, viajarFormComponent],
-  exports: [ViajarComponent],
+  declarations: [ViajarComponent, viajarFormComponent, VuelosConsultaComponent],
+  exports: [ViajarComponent, ],
 })
 export class ViajarModule { }

@@ -1,25 +1,24 @@
 <div id="content">
   <div class="row">
-    
+
   </div>
   <div class="row">
-      
-      <div class="col-sm-2">
-          <h1>Horarios</h1>
-          <br>
-          <mat-list-item>
-            <button mat-raised-button style="background-color:#04ad07;color:#ffffff"
-             (click)="openCreateDialog()">
-             <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Registrar</button>
-          </mat-list-item>
-        </div>
-      
+
+    <div class="col-sm-2">
+      <h1>Horarios</h1>
+      <br>
+      <mat-list-item>
+        <button mat-raised-button style="background-color:#04ad07;color:#ffffff" (click)="openCreateDialog()">
+          <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Registrar</button>
+      </mat-list-item>
+    </div>
+
   </div>
   <br>
   <br>
   <div class="row">
     <div class="col-sm-12">
-      <div  class="well">
+      <div class="well">
         <mat-form-field>
           <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Busqueda">
         </mat-form-field>
@@ -34,40 +33,33 @@
             </ng-container>
 
             <!-- Progress Column -->
-            <ng-container matColumnDef="Hora">
+            <ng-container matColumnDef="hora">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Hora </th>
-              <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
+              <td mat-cell *matCellDef="let row"> {{row.hora}} </td>
             </ng-container>
 
             <!-- Name Column -->
-            <ng-container matColumnDef="Tiempo de Abordaje">
+            <ng-container matColumnDef="tiempo_abordaje">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Tiempo de Abordaje </th>
-              <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+              <td mat-cell *matCellDef="let row"> {{row.tiempo_abordaje}} </td>
             </ng-container>
 
             <!-- Tiempo de Abordaje Column -->
-            <ng-container matColumnDef="Tiempo de Desabordaje">
+            <ng-container matColumnDef="tiempo_desabordaje">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Tiempo de Desabordaje </th>
-              <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+              <td mat-cell *matCellDef="let row"> {{row.tiempo_desabordaje}} </td>
             </ng-container>
 
 
             <ng-container matColumnDef="action" class="mat-form-field">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
               <td mat-cell *matCellDef="let row" class="row">
-                <div class="button-row" >
+                <div class="button-row">
                   <div class="col-sm-2">
-                  <button mat-mini-fab color="primary"
-                  matTooltip="Editar">
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                  </button>
-                </div>
-                <div class="col-sm-1">
-                  <button mat-mini-fab color="warn"
-                  matTooltip="Borrar">
-                    <i class="fa fa-trash" aria-hidden="true"></i>
-                  </button>
-                </div>
+                    <button mat-mini-fab color="primary" matTooltip="Editar" (click)="openUpdateDialog(row.id)">
+                      <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button>
+                  </div>
                 </div>
               </td>
             </ng-container>
@@ -83,5 +75,3 @@
     </div>
   </div>
 </div>
-
-

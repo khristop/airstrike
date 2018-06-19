@@ -29,33 +29,33 @@
             <table mat-table [dataSource]="dataSource" matSort>
   
               <!-- codigo Column -->
-              <ng-container matColumnDef="Código">
+              <ng-container matColumnDef="codigo">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Código </th>
-                <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+                <td mat-cell *matCellDef="let row"> {{row.codigo}} </td>
               </ng-container>
   
               <!-- Progress Column -->
-              <ng-container matColumnDef="Nombre">
+              <ng-container matColumnDef="nombre">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
-                <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
+                <td mat-cell *matCellDef="let row"> {{row.nombre}}% </td>
               </ng-container>
   
               <!-- Código de Ciudad Column -->
-              <ng-container matColumnDef="Código de Ciudad">
+              <ng-container matColumnDef="ciudad_codigo">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Código de Ciudad </th>
-                <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+                <td mat-cell *matCellDef="let row"> {{row.ciudad_codigo}} </td>
               </ng-container>
 
                <!-- Telefono Column -->
-               <ng-container matColumnDef="Telefono">
+               <ng-container matColumnDef="telefono">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Telefono </th>
-                  <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+                  <td mat-cell *matCellDef="let row"> {{row.telefono}} </td>
                 </ng-container>
 
               <!-- Bahías Column -->
-              <ng-container matColumnDef="Bahía">
+              <ng-container matColumnDef="bahias">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Bahía </th>
-                  <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+                  <td mat-cell *matCellDef="let row"> {{row.bahias}} </td>
                 </ng-container>
   
   

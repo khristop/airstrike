@@ -2,9 +2,7 @@ import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 import { HorarioService } from '../../core/rest/horario/horario.service';
-import { TimepickerModule, WavesModule } from 'ng-uikit-pro-standard'
-import { NgbdTimepickerBasic } from './timepicker-basic';
-import {NgbTimeStruct} from '@ng-bootstrap/ng-bootstrap';
+import { NotificationService } from '../../shared/utils/notification.service';
 
 @Component({
   selector: 'app-horario-form',
@@ -45,6 +43,7 @@ export class HorarioFormComponent implements OnInit {
   constructor(private fb: FormBuilder, 
     public dialogRef: MatDialogRef<HorarioFormComponent>,
     private _horario_service: HorarioService,
+    private notificationService: NotificationService
   ) {
 
   }
@@ -52,7 +51,6 @@ export class HorarioFormComponent implements OnInit {
   const horaControl = new FormControl({value: '', disabled: false}, [Validators.required, ]);
   const abordajeControl = new FormControl({value: '', disabled: false}, [Validators.required, ]);
   const desabordajeControl = new FormControl({value: '', disabled: false}, [Validators.required, ]);
-  const modelo_avionControl = new FormControl({value: '', disabled: false}, [ ]);
   this.horarioForm = this.fb.group({
     hideRequired: false,  // configuracion
     floatLabel: 'auto',   // configuracion
@@ -67,13 +65,26 @@ export class HorarioFormComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  registrarAeropuerto(){
-    console.log("registrar");
+  registrarHorario(){
     this._horario_service.guardar(this.horarioForm.value).subscribe((res)=>{
       if(res){
-        console.log("registrado con exito");
+        this.dialogRef.close();
+        this.notificationService.bigBox({
+          title: "Registrado con exito",
+          content: "Se registro el cliente con exito, ya puede ingresar a la aplicacion",
+          color: "#C79121",
+          timeout: 8000,
+          icon: "fa fa-check",
+        
+        });
+
       }
     })
+  }
+
+  
+  onCerrar(): void {
+    this.dialogRef.close();
   }
 
 
