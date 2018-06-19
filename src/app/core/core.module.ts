@@ -18,6 +18,8 @@ import { EstadoUserService } from './rest/auth/estado-user.service';
 import { HorarioService } from './rest/horario/horario.service';
 import { AeropuertoService } from './rest/aeropuerto/aeropuerto.service';
 import { CiudadService } from './rest/aeropuerto/ciudad.service';
+import { PaisService } from './rest/aeropuerto/pais.service';
+import { ProgramacionService } from './rest/programacion.service';
 
 @NgModule({
   imports: [
@@ -45,6 +47,8 @@ import { CiudadService } from './rest/aeropuerto/ciudad.service';
     HorarioService,
     AeropuertoService,
     CiudadService,
+    PaisService,
+    ProgramacionService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ApiInterceptor,
