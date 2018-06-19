@@ -1,5 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatDialog} from '@angular/material';
+import { TipoClaseFormComponent } from '../tipo-clase-form/tipo-clase-form.component';
+import { TipoClaseService } from '../../core/rest/tipo-clase/tipo-clase.service';
 
 @Component({
   selector: 'airstrike-tipo-clase-list',
@@ -8,25 +11,43 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 })
 export class TipoClaseListComponent implements OnInit {
   columnas = ['Id', 'Nombre', 'action'];
-  dataSource: MatTableDataSource<UserData>;
+  dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor() {
-    // Create 100 users
-    const users: UserData[] = [];
-    for (let i = 1; i <= 100; i++) {
-      users.push(createNewUser(i));
-    }
+  //cosas del form
+  @ViewChild('dialogCreate') dialogCreate: TemplateRef<any>;
+  dialogRef;
 
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
+  dialogUpdateCliRef;
+  constructor(private _dialog: MatDialog,
+    private _gat_servide: TipoClaseService
+  ){
+
+  }
+  
+//mas cosas del form
+  openCreateDialog(): void {
+    this.dialogRef = this._dialog.open( TipoClaseFormComponent , {
+      width: '850px',
+    });
+
+    this.dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialogo cerrado');
+    });
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this._gat_servide.obtenerTodos().subscribe(tipoclases => {
+      this.dataSource = new MatTableDataSource(tipoclases);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
   }
 
   applyFilter(filterValue: string) {
@@ -37,33 +58,16 @@ export class TipoClaseListComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-}
 
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
+  openUpdateDialog(id: number) {
+    //ejecutar peticion hacia el servicio primero
+    this.dialogUpdateCliRef = this._dialog.open(TipoClaseFormComponent, {
+      width: '850px',
+    });
 
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-  };
+    this.dialogUpdateCliRef.afterClosed().subscribe(result => {
+      console.log('Dialogo cerrado');
+    });
+  }
 
-
-}
-
-const COLORS = ['maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple',
-  'fuchsia', 'lime', 'teal', 'aqua', 'blue', 'navy', 'black', 'gray'];
-const NAMES = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
-  'Charlotte', 'Theodore', 'Isla', 'Oliver', 'Isabella', 'Jasper',
-  'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'];
-
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
 }

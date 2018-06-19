@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Registro de Tipo de Clases</h1>
+<div mat-dialog-content>
+  <div class="container-fluid">
+    <div class="tipo-clase-form">
+      <form class="tipo-clase-form" [formGroup]="tipo_claseForm">
+          <div class="row">
+              <div class="col-md-12">
+                <mat-form-field>
+                  <input matInput formControlName="nombre" placeholder="ingrese el nombre del tipo de clase">
+                  <mat-label>
+                    <mat-icon>airplanemode_active</mat-icon>
+                    Nombre de clase
+                  </mat-label>
+                </mat-form-field>
+              </div>  
+            </div>
+      </form>
+    </div>
+    <pre>{{ tipo_claseForm.value | json }}</pre>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onCerrar()">Cerrar</button>
+  <button mat-button color="success" cdkFocusInitial [disabled]="!tipo_claseForm.valid" (click)="registrarTipoClase()">Registrar</button>
+</div>

@@ -10,6 +10,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {MaterialModule} from '../shared/layout/material/material.module';
 import {TipoAvionRouting} from './tipo-avion.routing';
 import {AirStrikeModule} from '../shared/airstrike.module';
+import { TipoAvionFormComponent } from './tipo-avion-form/tipo-avion-form.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import {AirStrikeModule} from '../shared/airstrike.module';
     MaterialModule,
     ReactiveFormsModule,
   ],
-  declarations: [TipoAvionComponent, TipoAvionListComponent]
+  declarations: [TipoAvionComponent, TipoAvionListComponent, TipoAvionFormComponent]
 })
 export class TipoAvionModule { }
