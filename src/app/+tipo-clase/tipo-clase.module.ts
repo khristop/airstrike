@@ -10,6 +10,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {MaterialModule} from '../shared/layout/material/material.module';
 import {TipoClaseRouting} from './tipo-clase.routing';
 import {AirStrikeModule} from '../shared/airstrike.module';
+import { TipoClaseFormComponent } from './tipo-clase-form/tipo-clase-form.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import {AirStrikeModule} from '../shared/airstrike.module';
     MaterialModule,
     ReactiveFormsModule,
   ],
-  declarations: [TipoClaseListComponent, TipoClaseComponent]
+  declarations: [TipoClaseListComponent, TipoClaseComponent, TipoClaseFormComponent]
 })
 export class TipoClaseModule { }

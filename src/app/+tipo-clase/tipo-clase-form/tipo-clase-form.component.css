@@ -1,0 +1,25 @@
+.tipo-clase-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  .tipo-clase-form > .mat-form-field {
+    width: 100%;
+  }
+  
+  .tipo-clase-form form {
+    margin-bottom: 20px;
+  }
+  
+  .tipo-clase-form form > * {
+    margin: 5px 0;
+  }
+  
+  .tipo-clase-form .mat-radio-button {
+    margin: 0 5px;
+  }
+  
