@@ -10,7 +10,7 @@ import { ModeloAvionService } from '../../core/rest/modelo-avion/modelo-avion.se
   styleUrls: ['./modelo-avion-list.component.css']
 })
 export class ModeloAvionListComponent implements OnInit {
-  columnas = ['Id', 'Nombre Modelo', 'Marca', 'Cantidad de Maletas', 'Cantidad de Asientos', 'action'];
+  columnas = ['id', 'nombre_modelo', 'marca', 'cantidad_maleta', 'cantidad_asientos', 'action'];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
