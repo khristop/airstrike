@@ -10,7 +10,7 @@ import { TipoAvionService } from '../../core/rest/tipo-avion/tipo-avion.service'
   styleUrls: ['./tipo-avion-list.component.css']
 })
 export class TipoAvionListComponent implements OnInit {
-  columnas = ['id', 'id_horario', 'aeropuerto_codigo','action'];
+  columnas = ['id', 'nombre','action'];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -59,7 +59,7 @@ export class TipoAvionListComponent implements OnInit {
     }
   }
 
-  openUpdateDialog(idCliente: number) {
+  openUpdateDialog(id: number) {
     //ejecutar peticion hacia el servicio primero
     this.dialogUpdateCliRef = this._dialog.open(TipoAvionFormComponent, {
       width: '850px',

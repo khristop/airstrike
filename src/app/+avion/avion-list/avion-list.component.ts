@@ -2,6 +2,8 @@ import {Component, ElementRef, OnInit, TemplateRef, ViewChild} from '@angular/co
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {MatDialog} from '@angular/material';
 import { AvionFormComponent } from '../avion-form/avion-form.component';
+import { AvionService } from '../../core/rest/avion/avion.service';
+
 
 @Component({
   selector: 'airstrike-avion-list',
@@ -11,8 +13,8 @@ import { AvionFormComponent } from '../avion-form/avion-form.component';
 export class AvionListComponent implements OnInit {
 
 
-  columnas = ['Placa', 'Id Tipo de avión', 'Código de linea Aerea','Id modelo de Avión','action'];
-  dataSource: MatTableDataSource<UserData>;
+  columnas = ['placa', 'tipo_avion_id', 'linea_aerea_codigo','modelo_avion_id','action'];
+  dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -20,16 +22,10 @@ export class AvionListComponent implements OnInit {
   //cosas del form
   @ViewChild('dialogCreate') dialogCreate: TemplateRef<any>;
   dialogRef;
-
-  constructor(private _dialog: MatDialog) {
-    // Create 100 users
-    const users: UserData[] = [];
-    for (let i = 1; i <= 100; i++) {
-      users.push(createNewUser(i));
-    }
-
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
+  dialogUpdateCliRef;
+  constructor(private _dialog: MatDialog,
+    private _gat_servide: AvionService
+  ){
   }
 //mas cosas del form
   openCreateDialog(): void {
@@ -47,8 +43,11 @@ export class AvionListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this._gat_servide.obtenerTodos().subscribe(aviones => {
+      this.dataSource = new MatTableDataSource(aviones);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
   }
 
   applyFilter(filterValue: string) {
@@ -59,33 +58,17 @@ export class AvionListComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-}
-
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
-
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-  };
 
 
-}
+  openUpdateDialog(placa: String) {
+    //ejecutar peticion hacia el servicio primero
+    this.dialogUpdateCliRef = this._dialog.open(AvionFormComponent, {
+      width: '850px',
+    });
 
-const COLORS = ['maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple',
-  'fuchsia', 'lime', 'teal', 'aqua', 'blue', 'navy', 'black', 'gray'];
-const NAMES = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
-  'Charlotte', 'Theodore', 'Isla', 'Oliver', 'Isabella', 'Jasper',
-  'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'];
+    this.dialogUpdateCliRef.afterClosed().subscribe(result => {
+      console.log('Dialogo cerrado');
+    });
+  }
 
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
 }
