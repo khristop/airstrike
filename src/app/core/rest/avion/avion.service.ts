@@ -37,7 +37,15 @@ export class AvionService {
   }
 
   obtenerTodos(filtro?: String) {
-    return this.http.get(filtro ? this.resourceUrl + filtro+"?_token="+localStorage.getItem('token') : this.resourceUrl+"?_token="+localStorage.getItem('token') );
+    return this.http.get<any>(filtro ? this.resourceUrl + filtro : this.resourceUrl+"?_token="+localStorage.getItem('token')).pipe(
+      map(res=> {
+        if(res.status == 'OK'){
+          return res['data'];
+        }else{
+          return [];
+        }
+      })
+    ); 
   }
   actualizar(data: Object) {
     const dataSerial = JSON.stringify(data);
