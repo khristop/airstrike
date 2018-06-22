@@ -10,7 +10,7 @@ import { TipoClaseService } from '../../core/rest/tipo-clase/tipo-clase.service'
   styleUrls: ['./tipo-clase-list.component.css']
 })
 export class TipoClaseListComponent implements OnInit {
-  columnas = ['Id', 'Nombre', 'action'];
+  columnas = ['id', 'nombre', 'action'];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

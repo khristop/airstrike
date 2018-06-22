@@ -50,6 +50,11 @@
               <th mat-header-cell *matHeaderCellDef mat-sort-header>precio_maleta</th>
               <td mat-cell *matCellDef="let row"> $ {{row.precio_maleta}} </td>
             </ng-container>
+            <!-- ID Column -->
+            <ng-container matColumnDef="tipo_clase_id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>tipo_clase_id</th>
+              <td mat-cell *matCellDef="let row"> $ {{row.tipo_clase_id}} </td>
+            </ng-container>
 
             <ng-container matColumnDef="action" class="mat-form-field">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>

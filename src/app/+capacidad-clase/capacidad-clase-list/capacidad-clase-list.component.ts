@@ -10,7 +10,7 @@ import { CapacidadClaseService } from '../../core/rest/capacidad-clase/capacidad
   styleUrls: ['./capacidad-clase-list.component.css']
 })
 export class CapacidadClaseListComponent implements OnInit {
-  columnas = ['id', 'id_horario', 'aeropuerto_codigo','action'];
+  columnas = ['id', 'cantidad', 'id_clases', 'modelo_avion_id','action'];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -59,7 +59,7 @@ export class CapacidadClaseListComponent implements OnInit {
     }
   }
 
-  openUpdateDialog(idCliente: number) {
+  openUpdateDialog(id: number) {
     //ejecutar peticion hacia el servicio primero
     this.dialogUpdateCliRef = this._dialog.open(CapacidadClaseFormComponent, {
       width: '850px',
