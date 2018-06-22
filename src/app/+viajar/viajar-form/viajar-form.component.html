@@ -97,11 +97,12 @@
 
                 <div class="tab-pane" [class.active]="activeStep.key == 'step3'">
                     <br>
-                    <h3>
-                        <strong>Paso 3</strong> - Seleccina los vuelos que mas te convienen </h3>
-                        <button class="btn bt-primary btn-sm" (click)="consultarVuelos()">consultar</button>
+                    <div class="text-center">
+                        <h3 ><strong>Paso 3</strong> - Seleccina los vuelos que mas te convienen </h3>
+                        <button class="btn btn-primary btn-lg" (click)="consultarVuelos()">consultar</button>
+                    </div>
 
-                    <div class="row" *ngIf="vuelos && vuelos.ida && vuelos.ida.length > 0 ; else NohayVuelos">
+                    <div class="row" *ngIf=" vuelos && vuelos.ida && vuelos.ida.length > 0 ; else NohayVuelos">
                         <div class="col-md-12 text-center">
                             <h3>Vuelos de ida</h3>
                         </div>
@@ -120,7 +121,7 @@
                 </div>                
 
                 <ng-template #NohayVuelos>
-                    <h1>No se han registrado vuelos para esas fechas</h1>
+                    <h1 *ngIf="consultaRealizada">No se han registrado vuelos para esas fechas</h1>
                 </ng-template>
 
                 <div>

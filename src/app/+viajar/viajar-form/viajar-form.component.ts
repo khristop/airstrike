@@ -81,6 +81,8 @@ export class viajarFormComponent implements OnInit, DoCheck {
 
   public activeStep = this.steps[0];
 
+  consultaRealizada = false;
+
   viajarForm : FormGroup;
 
   constructor(
@@ -187,6 +189,7 @@ export class viajarFormComponent implements OnInit, DoCheck {
   }
 
   consultarVuelos(){
+    this.consultaRealizada = true;
     const fecha1 = this.viajarForm.get('fecha_ida').value;
     var todate=new Date(fecha1).getDate();
     var tomonth=new Date(fecha1).getMonth()+1;
@@ -199,8 +202,12 @@ export class viajarFormComponent implements OnInit, DoCheck {
     var toyear2=new Date(fecha2).getFullYear();
     var original_date2=+toyear2+'-'+tomonth2+'-'+todate2;
 
-    const filtro = 'search?destino='+this.viajarForm.get('ciudad_destino').value + '&fecha_ida='+
-    original_date1 +'&fecha_regreso='+original_date2+"&_token="+localStorage.getItem('token');
+    let filtro = 'search?destino='+this.viajarForm.get('ciudad_destino').value + '&fecha_ida='+
+    original_date1 +'&fecha_regreso='+original_date2;
+
+    if(localStorage.getItem('token')){
+      filtro+="&_token="+localStorage.getItem('token')
+    }
     
     this._pro.obtenerTodos(filtro).subscribe(vuelos => {
       console.log(vuelos);

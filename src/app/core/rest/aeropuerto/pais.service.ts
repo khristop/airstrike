@@ -31,7 +31,13 @@ export class PaisService {
   }
 
   obtenerTodos(filtro?: String) {
-    return this.http.get<any>(filtro ? this.resourceUrl + filtro : this.resourceUrl+"?_token="+localStorage.getItem('token')).pipe(
+    let url;
+    if(localStorage.getItem('token')){
+      url = filtro ? this.resourceUrl + filtro : this.resourceUrl+"?_token="+localStorage.getItem('token');
+    }else{
+      url = filtro ? this.resourceUrl + filtro : this.resourceUrl;
+    }
+    return this.http.get<any>(url).pipe(
       map(res=> {
         if(res.status == 'OK'){
           return res['data'];
@@ -43,7 +49,13 @@ export class PaisService {
   }
   actualizar(data: Object) {
     const dataSerial = JSON.stringify(data);
-    return this.http.put<any>(this.resourceUrl+"?_token="+localStorage.getItem('token'), dataSerial).pipe(
+    let url;
+    if(localStorage.getItem('token')){
+      url = this.resourceUrl+"?_token="+localStorage.getItem('token');
+    }else{
+      url =  this.resourceUrl;
+    }
+    return this.http.put<any>(url, dataSerial).pipe(
       map(res=> {
         if(res.status == 'OK'){
           return res['data'];

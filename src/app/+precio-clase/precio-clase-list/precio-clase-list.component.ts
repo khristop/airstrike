@@ -10,7 +10,7 @@ import { PrecioClaseService } from '../../core/rest/precio-clase/precio-clase.se
   styleUrls: ['./precio-clase-list.component.css']
 })
 export class PrecioClaseListComponent implements OnInit {
-  columnas = ['Id', 'Id Programación de vuelo', 'Precio', 'Precio de Maletas', 'action'];
+  columnas = ['id', 'programacion_vuelo_id', 'precio', 'precio_maleta', 'action'];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

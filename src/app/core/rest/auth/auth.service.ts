@@ -82,6 +82,13 @@ export class AuthService implements OnInit {
             });
     }
 
+    logoutOnly(): void {
+        localStorage.removeItem("token");
+        localStorage.removeItem("usuario");
+        this.tokenSource.next(null);
+        this.isLoggedIn = false;
+    }
+
     logout(): void {
         localStorage.removeItem("token");
         localStorage.removeItem("usuario");

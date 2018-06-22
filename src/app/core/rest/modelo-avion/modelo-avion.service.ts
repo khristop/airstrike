@@ -18,7 +18,7 @@ export class ModeloAvionService {
   public modeloavione = this.modeloavionSource.asObservable();
 
   constructor(private http: HttpClient) {
-    this.resourceUrl = config.API_URL + 'modelo-avion/';
+    this.resourceUrl = config.REST_URL + 'modeloavion/';
   }
 
   fetchModeloAvion(filtro?: String) {
