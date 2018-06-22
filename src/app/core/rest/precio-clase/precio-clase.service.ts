@@ -18,7 +18,7 @@ export class PrecioClaseService {
   public precio_clase = this.precio_claseSource.asObservable();
 
   constructor(private http: HttpClient) {
-    this.resourceUrl = config.API_URL + 'precio_clase/';
+    this.resourceUrl = config.REST_URL + 'precioclase/';
   }
 
   fetchPrecioClase(filtro?: String) {

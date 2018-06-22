@@ -31,7 +31,13 @@ export class CiudadService {
   }
 
   obtenerTodos(filtro?: String) {
-    return this.http.get<any>(filtro ? this.resourceUrl + filtro : this.resourceUrl+"?_token="+localStorage.getItem('token')).pipe(
+    let url;
+    if(localStorage.getItem('token')){
+      url = filtro ? this.resourceUrl + filtro : this.resourceUrl+"?_token="+localStorage.getItem('token');
+    }else{
+      url = filtro ? this.resourceUrl + filtro : this.resourceUrl;
+    }
+    return this.http.get<any>(url).pipe(
       map(res=> {
         if(res.status == 'OK'){
           return res['data'];

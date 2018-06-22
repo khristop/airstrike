@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { AuthService } from '../../core/rest/auth/auth.service';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class InicioComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _auth_service: AuthService) { }
 
   ngOnInit() {
   }

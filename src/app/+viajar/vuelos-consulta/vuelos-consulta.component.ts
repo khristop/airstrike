@@ -15,7 +15,7 @@ import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
       `,]
 })
 export class VuelosConsultaComponent implements OnInit {
-    columnas = ['vuelo_codigo', 'fecha', 'aeropuerto_nombre', 'linea_aerea_nombre_oficial', 'horario_hora', 'nombre_clase', 'action'];
+    columnas = ['codigo_vuelo', 'fecha', 'aeropuerto_nombre', 'linea_aerea_nombre_oficial', 'horario_hora', 'nombre_clase', 'precio_clase', 'action'];
     dataSource: MatTableDataSource<any>;
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
