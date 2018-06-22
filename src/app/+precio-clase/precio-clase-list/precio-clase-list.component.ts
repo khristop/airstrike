@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, TemplateRef, ViewChild} from '@angular/co
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {MatDialog} from '@angular/material';
 import { PrecioClaseFormComponent } from '../precio-clase-form/precio-clase-form.component';
+import { PrecioClaseService } from '../../core/rest/precio-clase/precio-clase.service';
 
 @Component({
   selector: 'airstrike-precio-clase-list',
@@ -10,7 +11,7 @@ import { PrecioClaseFormComponent } from '../precio-clase-form/precio-clase-form
 })
 export class PrecioClaseListComponent implements OnInit {
   columnas = ['Id', 'Id Programación de vuelo', 'Precio', 'Precio de Maletas', 'action'];
-  dataSource: MatTableDataSource<UserData>;
+  dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -18,16 +19,11 @@ export class PrecioClaseListComponent implements OnInit {
 //cosas del form
 @ViewChild('dialogCreate') dialogCreate: TemplateRef<any>;
 dialogRef;
+dialogUpdateCliRef;
 
-constructor(private _dialog: MatDialog)  {
-    // Create 100 users
-    const users: UserData[] = [];
-    for (let i = 1; i <= 100; i++) {
-      users.push(createNewUser(i));
-    }
+constructor(private _dialog: MatDialog,
+  private _precio_clase_service: PrecioClaseService)  {
 
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
   }
 
   //mas cosas del form
@@ -46,45 +42,31 @@ constructor(private _dialog: MatDialog)  {
   }
 
   ngOnInit() {
+    this._precio_clase_service.obtenerTodos().subscribe(precioclases => {
+      this.dataSource = new MatTableDataSource(precioclases);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-  }
+  });
+}
 
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+applyFilter(filterValue: string) {
+  filterValue = filterValue.trim(); // Remove whitespace
+  filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+  this.dataSource.filter = filterValue;
+  if (this.dataSource.paginator) {
+    this.dataSource.paginator.firstPage();
   }
 }
 
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
+openUpdateDialog(id: number) {
+  //ejecutar peticion hacia el servicio primero
+  this.dialogUpdateCliRef = this._dialog.open(PrecioClaseFormComponent, {
+    width: '850px',
+  });
 
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-  };
-
-
+  this.dialogUpdateCliRef.afterClosed().subscribe(result => {
+    console.log('Dialogo cerrado');
+  });
 }
 
-const COLORS = ['maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple',
-  'fuchsia', 'lime', 'teal', 'aqua', 'blue', 'navy', 'black', 'gray'];
-const NAMES = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
-  'Charlotte', 'Theodore', 'Isla', 'Oliver', 'Isabella', 'Jasper',
-  'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'];
-
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
 }

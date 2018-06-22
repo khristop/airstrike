@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Registro de Tipo de aviones</h1>
+<div mat-dialog-content>
+  <div class="container-fluid">
+    <div class="tipo-avion-form">
+      <form class="tipo-avion-form" [formGroup]="tipo_avionForm">
+          <div class="row">
+              <div class="col-md-12">
+                <mat-form-field>
+                  <input matInput formControlName="nombre" placeholder="ingrese el nombre del tipo de avión">
+                  <mat-label>
+                    <mat-icon>airplanemode_active</mat-icon>
+                    Nombre de tipo
+                  </mat-label>
+                </mat-form-field>
+              </div>  
+            </div>
+      </form>
+    </div>
+    <pre>{{ tipo_avionForm.value | json }}</pre>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onCerrar()">Cerrar</button>
+  <button mat-button color="success" cdkFocusInitial [disabled]="!tipo_avionForm.valid" (click)="registrarTipoAvion()">Registrar</button>
+</div>

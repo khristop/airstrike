@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, TemplateRef, ViewChild} from '@angular/co
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {MatDialog} from '@angular/material';
 import { ModeloAvionFormComponent } from '../modelo-avion-form/modelo-avion-form.component';
+import { ModeloAvionService } from '../../core/rest/modelo-avion/modelo-avion.service';
 
 @Component({
   selector: 'airstrike-modelo-avion-list',
@@ -10,24 +11,20 @@ import { ModeloAvionFormComponent } from '../modelo-avion-form/modelo-avion-form
 })
 export class ModeloAvionListComponent implements OnInit {
   columnas = ['Id', 'Nombre Modelo', 'Marca', 'Cantidad de Maletas', 'Cantidad de Asientos', 'action'];
-  dataSource: MatTableDataSource<UserData>;
+  dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-
+  dialogRef;
+  dialogUpdateCliRef;
  //cosas del form
  @ViewChild('dialogCreate') dialogCreate: TemplateRef<any>;
- dialogRef;
+ 
 
- constructor(private _dialog: MatDialog) {
-    // Create 100 users
-    const users: UserData[] = [];
-    for (let i = 1; i <= 100; i++) {
-      users.push(createNewUser(i));
-    }
+ constructor(private _dialog: MatDialog,
+  private _modelo_avion_service: ModeloAvionService
+) {
 
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
   }
 
   //mas cosas del form
@@ -46,10 +43,14 @@ export class ModeloAvionListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
+    this._modelo_avion_service.obtenerTodos().subscribe(modeloaviones => {
+      this.dataSource = new MatTableDataSource(modeloaviones);
+      this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-  }
+  });
+}
 
+  //cosas de la lista
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
@@ -58,33 +59,16 @@ export class ModeloAvionListComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  openUpdateDialog(id:number){
+    //ejecutar peticion hacia el servicio primero
+    this.dialogUpdateCliRef = this._dialog.open( ModeloAvionFormComponent , {
+      width: '850px',
+    });
+
+    this.dialogUpdateCliRef.afterClosed().subscribe(result => {
+      console.log('Dialogo cerrado');
+    });
+  }
 }
 
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
-
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-  };
-
-
-}
-
-const COLORS = ['maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple',
-  'fuchsia', 'lime', 'teal', 'aqua', 'blue', 'navy', 'black', 'gray'];
-const NAMES = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
-  'Charlotte', 'Theodore', 'Isla', 'Oliver', 'Isabella', 'Jasper',
-  'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'];
-
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
-}

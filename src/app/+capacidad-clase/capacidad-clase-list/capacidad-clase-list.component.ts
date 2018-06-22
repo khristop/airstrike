@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, TemplateRef, ViewChild} from '@angular/co
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {MatDialog} from '@angular/material';
 import { CapacidadClaseFormComponent } from '../capacidad-clase-form/capacidad-clase-form.component';
+import { CapacidadClaseService } from '../../core/rest/capacidad-clase/capacidad-clase.service';
 
 @Component({
   selector: 'airstrike-capacidad-clase-list',
@@ -9,8 +10,8 @@ import { CapacidadClaseFormComponent } from '../capacidad-clase-form/capacidad-c
   styleUrls: ['./capacidad-clase-list.component.css']
 })
 export class CapacidadClaseListComponent implements OnInit {
-  columnas = ['Id', 'Capacidad', 'Id de la Clase','Id de modelo de Avión','action'];
-  dataSource: MatTableDataSource<UserData>;
+  columnas = ['id', 'id_horario', 'aeropuerto_codigo','action'];
+  dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -19,18 +20,14 @@ export class CapacidadClaseListComponent implements OnInit {
   @ViewChild('dialogCreate') dialogCreate: TemplateRef<any>;
   dialogRef;
 
-  constructor(private _dialog: MatDialog)  {
-    // Create 100 users
-    const users: UserData[] = [];
-    for (let i = 1; i <= 100; i++) {
-      users.push(createNewUser(i));
-    }
+  dialogUpdateCliRef;
+  constructor(private _dialog: MatDialog,
+    private _gat_servide: CapacidadClaseService
+  ){
 
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
   }
-
-  //mas cosas del form
+  
+//mas cosas del form
   openCreateDialog(): void {
     this.dialogRef = this._dialog.open( CapacidadClaseFormComponent , {
       width: '850px',
@@ -40,9 +37,17 @@ export class CapacidadClaseListComponent implements OnInit {
       console.log('Dialogo cerrado');
     });
   }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this._gat_servide.obtenerTodos().subscribe(capacidadclases => {
+      this.dataSource = new MatTableDataSource(capacidadclases);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
   }
 
   applyFilter(filterValue: string) {
@@ -53,33 +58,16 @@ export class CapacidadClaseListComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-}
 
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
+  openUpdateDialog(idCliente: number) {
+    //ejecutar peticion hacia el servicio primero
+    this.dialogUpdateCliRef = this._dialog.open(CapacidadClaseFormComponent, {
+      width: '850px',
+    });
 
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-  };
+    this.dialogUpdateCliRef.afterClosed().subscribe(result => {
+      console.log('Dialogo cerrado');
+    });
+  }
 
-
-}
-
-const COLORS = ['maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple',
-  'fuchsia', 'lime', 'teal', 'aqua', 'blue', 'navy', 'black', 'gray'];
-const NAMES = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
-  'Charlotte', 'Theodore', 'Isla', 'Oliver', 'Isabella', 'Jasper',
-  'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'];
-
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
 }
